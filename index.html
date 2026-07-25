@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   
-  <!-- Icône pour iOS (iPhone/iPad) -->
-  <link rel="apple-touch-icon" sizes="180x180" href="frog.png">
-
-  <!-- Favicon pour navigateurs -->
-  <link rel="icon" type="image/png" sizes="192x192" href="frog.png">
+  <!-- Icône iOS et Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232d6a3f'/%3E%3Ctext y='80' font-size='80'%3E🐸%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232d6a3f'/%3E%3Ctext y='80' font-size='80'%3E🐸%3C/text%3E%3C/svg%3E">
 
   <title>Jeu de la Grenouille – Delorme</title>
   <style>
@@ -72,10 +70,7 @@
       transition: 0.2s;
       min-width: 50px;
     }
-    button:active {
-      transform: translateY(3px);
-    }
-
+    button:active { transform: translateY(3px); }
     .score-btn { 
       font-size: 1.2rem; 
       padding: 0;
@@ -89,36 +84,31 @@
       line-height: 1.2;
       text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
-
     .btn-or {
       background: radial-gradient(circle at 35% 30%, #ffe566 0%, #f9c74f 30%, #d4a017 70%, #b8860b 100%);
       color: #3a2500;
       border: 3px solid #ffd700;
       box-shadow: 0 5px 0 #8b6914, 0 8px 18px rgba(218,165,32,0.5);
     }
-
     .btn-argent {
       background: radial-gradient(circle at 35% 30%, #f8f8f8 0%, #d8d8d8 30%, #a8a8a8 70%, #787878 100%);
       color: #1b1b1b;
       border: 3px solid #c0c0c0;
       box-shadow: 0 5px 0 #5a5a5a, 0 8px 16px rgba(192,192,192,0.5);
     }
-
     .btn-bronze {
       background: radial-gradient(circle at 35% 30%, #f0d0a8 0%, #cd7f32 40%, #a0522d 80%, #6b3a1f 100%);
       color: #fff;
       border: 3px solid #daa06d;
       box-shadow: 0 5px 0 #5c3317, 0 8px 16px rgba(205,127,50,0.5);
     }
-
     .btn-zero {
       background: radial-gradient(circle at 35% 30%, #666 0%, #444 40%, #222 80%, #111 100%);
       color: #fff;
       border: 3px solid #555;
       box-shadow: 0 5px 0 #1a1a1a, 0 8px 16px rgba(0,0,0,0.5);
     }
-
-    .action-btn { 
+    .action-btn, .reset-btn { 
       background: #f9c74f;
       color: #1b4a2e;
       border: 3px solid #ffe5a3;
@@ -127,17 +117,6 @@
       padding: 12px 18px;
       box-shadow: 0 5px 0 #b07d2b, 0 6px 12px rgba(0,0,0,0.3);
     }
-
-    .reset-btn {
-      background: #f9c74f;
-      color: #1b4a2e;
-      border: 3px solid #ffe5a3;
-      font-size: 1.1rem;
-      border-radius: 25px;
-      padding: 12px 18px;
-      box-shadow: 0 5px 0 #b07d2b, 0 6px 12px rgba(0,0,0,0.3);
-    }
-
     .confirm-btn {
       background: #2a9d8f;
       color: white;
@@ -147,7 +126,6 @@
       padding: 12px 18px;
       box-shadow: 0 5px 0 #1a5c50;
     }
-
     input, select {
       padding: 12px;
       border-radius: 14px;
@@ -158,58 +136,15 @@
       background: white;
     }
     .players-setup input { width: 60%; }
-    .row { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      align-items: center; 
-      gap: 10px; 
-      margin: 12px 0; 
-    }
-    .scoreboard {
-      margin: 15px 0;
-    }
-    .player-score {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.3rem;
-      padding: 8px 15px;
-      margin: 4px 0;
-    }
-    .current-player {
-      background: #f9c74f;
-      color: #1b4a2e;
-      font-weight: bold;
-      border-radius: 10px;
-    }
-    .current-player-info { 
-      font-size: 1.5rem; 
-      margin: 10px 0; 
-      color: #f9c74f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .round-points-box {
-      font-size: 2rem;
-      font-weight: bold;
-      margin: 5px 0 15px;
-      color: #f9c74f;
-    }
-
-    .palets-remaining {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin: 12px 0; }
+    .scoreboard { margin: 15px 0; }
+    .player-score { display: flex; justify-content: space-between; font-size: 1.3rem; padding: 8px 15px; margin: 4px 0; }
+    .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 10px; }
+    .current-player-info { font-size: 1.5rem; margin: 10px 0; color: #f9c74f; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .round-points-box { font-size: 2rem; font-weight: bold; margin: 5px 0 15px; color: #f9c74f; }
+    .palets-remaining { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
     .palet-dot-small {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
+      width: 16px; height: 16px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
       border: 2px solid #4a4a4a;
       box-shadow: 0 2px 3px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
@@ -217,146 +152,54 @@
     }
     .palet-dot-small.used {
       background: radial-gradient(circle at 35% 30%, #3a3a3a 0%, #1a1a1a 80%);
-      opacity: 0.3;
-      border-color: #2a2a2a;
-      box-shadow: none;
+      opacity: 0.3; border-color: #2a2a2a; box-shadow: none;
     }
-
-    .palet-pyramid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-    }
-    .palet-pyramid .row-two {
-      display: flex;
-      gap: 6px;
-    }
+    .palet-pyramid { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .palet-pyramid .row-two { display: flex; gap: 6px; }
     .palet-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
+      width: 20px; height: 20px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
       border: 2px solid #4a4a4a;
       box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.1);
     }
-
     .confirm-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 100;
     }
     .confirm-box {
-      background: #2d6a3f;
-      border: 4px solid #f9c74f;
-      border-radius: 20px;
-      padding: 25px;
-      text-align: center;
-      max-width: 350px;
-      width: 90%;
+      background: #2d6a3f; border: 4px solid #f9c74f; border-radius: 20px; padding: 25px; text-align: center; max-width: 350px; width: 90%;
     }
-    .confirm-box p {
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-    .confirm-box .row {
-      gap: 20px;
-    }
-
-    .animation-area {
-      position: relative;
-      height: 90px;
-      overflow: hidden;
-      margin-top: 8px;
-    }
-    .frog-anim {
-      font-size: 5rem;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 0.6s ease;
-    }
+    .confirm-box p { font-size: 1.3rem; font-weight: bold; margin-bottom: 20px; }
+    .confirm-box .row { gap: 20px; }
+    .animation-area { position: relative; height: 90px; overflow: hidden; margin-top: 8px; }
+    .frog-anim { font-size: 5rem; position: absolute; left: 50%; transform: translateX(-50%); animation: bounce 0.6s ease; }
     @keyframes bounce {
-      0% { top: 50px; }
-      30% { top: -10px; }
-      50% { top: 20px; }
-      70% { top: -5px; }
-      100% { top: 50px; }
+      0% { top: 50px; } 30% { top: -10px; } 50% { top: 20px; } 70% { top: -5px; } 100% { top: 50px; }
     }
-    .moulin {
-      width: 70px;
-      height: 70px;
-      position: absolute;
-      left: 50%;
-      top: 10px;
-      transform: translateX(-50%);
-      animation: spin 1.5s linear infinite;
-    }
+    .moulin { width: 70px; height: 70px; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); animation: spin 1.5s linear infinite; }
     .blade {
-      position: absolute;
-      width: 14px;
-      height: 42px;
-      background: #c2a26b;
-      left: 28px;
-      top: 14px;
-      border-radius: 10px;
-      transform-origin: 50% 21px;
+      position: absolute; width: 14px; height: 42px; background: #c2a26b; left: 28px; top: 14px;
+      border-radius: 10px; transform-origin: 50% 21px;
     }
     .blade:nth-child(1) { transform: rotate(0deg); }
     .blade:nth-child(2) { transform: rotate(90deg); }
     .blade:nth-child(3) { transform: rotate(180deg); }
     .blade:nth-child(4) { transform: rotate(270deg); }
     @keyframes spin { 100% { transform: translateX(-50%) rotate(360deg); } }
-
-    .result-player {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.2rem;
-      padding: 10px 18px;
-      margin: 5px 0;
-      border-radius: 12px;
-    }
+    .result-player { display: flex; justify-content: space-between; font-size: 1.2rem; padding: 10px 18px; margin: 5px 0; border-radius: 12px; }
     .rank-1 { background: #ffd700; color: #3a2500; font-weight: bold; font-size: 1.4rem; }
     .rank-2 { background: #c0c0c0; color: #1b1b1b; font-weight: bold; font-size: 1.3rem; }
     .rank-3 { background: #cd7f32; color: #fff; font-weight: bold; font-size: 1.2rem; }
     .rank-other { background: rgba(255,255,255,0.1); }
-
     .hidden { display: none; }
     .btn-start {
-      font-size: 1.8rem;
-      padding: 16px 40px;
-      background: #f9c74f;
-      color: #1b4a2e;
-      border: 3px solid #ffe5a3;
-      margin-top: 20px;
-      border-radius: 30px;
-      letter-spacing: 2px;
-      box-shadow: 0 5px 0 #b07d2b;
+      font-size: 1.8rem; padding: 16px 40px; background: #f9c74f; color: #1b4a2e;
+      border: 3px solid #ffe5a3; margin-top: 20px; border-radius: 30px; letter-spacing: 2px; box-shadow: 0 5px 0 #b07d2b;
     }
-    label { 
-      font-weight: bold; 
-      color: #f9c74f; 
-      font-size: 1.1rem;
-      display: block;
-      margin-top: 8px;
-    }
+    label { font-weight: bold; color: #f9c74f; font-size: 1.1rem; display: block; margin-top: 8px; }
     .setup-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #f9c74f;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
+      font-size: 1.3rem; font-weight: bold; color: #f9c74f; margin-bottom: 15px;
+      display: flex; align-items: center; justify-content: center; gap: 15px;
     }
   </style>
 </head>
@@ -365,71 +208,33 @@
   <div id="setup">
     <div class="app-header">
       <span class="header-frog">🐸</span>
-      <div class="header-text">
-        JEU DE LA<br>GRENOUILLE<br>DE LA FAMILLE<br>DELORME
-      </div>
+      <div class="header-text">JEU DE LA<br>GRENOUILLE<br>DE LA FAMILLE<br>DELORME</div>
       <span class="header-frog">🐸</span>
     </div>
     <div class="setup-title">
-      <div class="palet-pyramid">
-        <div class="palet-dot"></div>
-        <div class="row-two">
-          <div class="palet-dot"></div>
-          <div class="palet-dot"></div>
-        </div>
-      </div>
+      <div class="palet-pyramid"><div class="palet-dot"></div><div class="row-two"><div class="palet-dot"></div><div class="palet-dot"></div></div></div>
       Paramètres de la partie
-      <div class="palet-pyramid">
-        <div class="palet-dot"></div>
-        <div class="row-two">
-          <div class="palet-dot"></div>
-          <div class="palet-dot"></div>
-        </div>
-      </div>
+      <div class="palet-pyramid"><div class="palet-dot"></div><div class="row-two"><div class="palet-dot"></div><div class="palet-dot"></div></div></div>
     </div>
-    <div>
-      <label>Nombre de joueurs :</label>
-      <input type="number" id="numPlayers" min="1" max="6" value="2" onchange="generateNameInputs()">
-    </div>
+    <div><label>Nombre de joueurs :</label><input type="number" id="numPlayers" min="1" max="6" value="2" onchange="generateNameInputs()"></div>
     <div id="nameInputs" class="players-setup"></div>
-    <div>
-      <label>Mode de jeu :</label>
-      <select id="gameMode" onchange="toggleMode()">
-        <option value="points">Points à atteindre</option>
-        <option value="rounds">Nombre de manches</option>
-      </select>
-    </div>
-    <div id="pointsTargetDiv">
-      <label>Points à atteindre :</label>
-      <input type="number" id="pointsTarget" min="100" value="1000" step="100">
-    </div>
-    <div id="roundsDiv" class="hidden">
-      <label>Nombre de manches :</label>
-      <input type="number" id="numRounds" min="1" value="3">
-    </div>
-    <div>
-      <label>Palets par joueur / manche :</label>
-      <input type="number" id="paletsPerRound" min="1" value="8">
-    </div>
+    <div><label>Mode de jeu :</label><select id="gameMode" onchange="toggleMode()"><option value="points">Points à atteindre</option><option value="rounds">Nombre de manches</option></select></div>
+    <div id="pointsTargetDiv"><label>Points à atteindre :</label><input type="number" id="pointsTarget" min="100" value="1000" step="100"></div>
+    <div id="roundsDiv" class="hidden"><label>Nombre de manches :</label><input type="number" id="numRounds" min="1" value="3"></div>
+    <div><label>Palets par joueur / manche :</label><input type="number" id="paletsPerRound" min="1" value="8"></div>
     <button class="btn-start" onclick="startGame()">LANCER LA PARTIE</button>
   </div>
 
   <div id="game" class="hidden">
     <div class="app-header" style="margin-bottom:15px; padding:12px;">
       <span class="header-frog" style="font-size:2.5rem;">🐸</span>
-      <div class="header-text" style="font-size:1.2rem; letter-spacing:2px;">
-        JEU DE LA GRENOUILLE<br>FAMILLE DELORME
-      </div>
+      <div class="header-text" style="font-size:1.2rem; letter-spacing:2px;">JEU DE LA GRENOUILLE<br>FAMILLE DELORME</div>
       <span class="header-frog" style="font-size:2.5rem;">🐸</span>
     </div>
     <div class="scoreboard" id="scoreboard"></div>
-    <div class="current-player-info">
-      <strong><span id="currentPlayerName"></span></strong>
-      <div class="palets-remaining" id="paletsRemaining"></div>
-    </div>
+    <div class="current-player-info"><strong><span id="currentPlayerName"></span></strong><div class="palets-remaining" id="paletsRemaining"></div></div>
     <div>Points marqués ce tour :</div>
     <div class="round-points-box"><span id="roundPoints">0</span></div>
-
     <div class="row">
       <button class="score-btn btn-argent" onclick="addScore(200)">200</button>
       <button class="score-btn btn-or" onclick="addScore(1000)">1000</button>
@@ -452,10 +257,7 @@
       <button class="score-btn btn-bronze" onclick="addScore(40)">40</button>
       <button class="score-btn btn-bronze" onclick="addScore(90)">90</button>
     </div>
-    <div class="row">
-      <button class="score-btn btn-zero" onclick="addScore(0)">0</button>
-    </div>
-
+    <div class="row"><button class="score-btn btn-zero" onclick="addScore(0)">0</button></div>
     <div class="row" style="margin-top:15px;">
       <button class="action-btn" onclick="undoLastScore()">Annuler</button>
       <button class="action-btn" onclick="endRoundEarly()">Finir la manche</button>
@@ -488,18 +290,9 @@
 </div>
 
 <script>
-  let players = [];
-  let mode = 'points';
-  let pointsTarget = 1000;
-  let numRounds = 3;
-  let paletsPerRound = 8;
-  let currentRound = 0;
-  let currentPlayerIndex = 0;
-  let currentPalet = 1;
-  let roundPoints = 0;
-  let gameOver = false;
-  let lastScores = [];
-  let finishOrder = [];
+  let players = [], mode = 'points', pointsTarget = 1000, numRounds = 3, paletsPerRound = 8;
+  let currentRound = 0, currentPlayerIndex = 0, currentPalet = 1, roundPoints = 0;
+  let gameOver = false, lastScores = [], finishOrder = [];
 
   function generateNameInputs() {
     const n = parseInt(document.getElementById('numPlayers').value);
@@ -507,10 +300,8 @@
     container.innerHTML = '';
     for (let i = 0; i < n; i++) {
       const input = document.createElement('input');
-      input.type = 'text';
-      input.id = `playerName${i}`;
-      input.placeholder = `Joueur ${i+1}`;
-      input.value = '';
+      input.type = 'text'; input.id = `playerName${i}`;
+      input.placeholder = `Joueur ${i+1}`; input.value = '';
       container.appendChild(input);
     }
   }
@@ -528,26 +319,14 @@
     players = [];
     for (let i = 0; i < n; i++) {
       const nameInput = document.getElementById(`playerName${i}`);
-      players.push({
-        name: nameInput ? (nameInput.value.trim() || `Joueur ${i+1}`) : `Joueur ${i+1}`,
-        totalScore: 0,
-        finished: false,
-        finishRank: null
-      });
+      players.push({ name: nameInput ? (nameInput.value.trim() || `Joueur ${i+1}`) : `Joueur ${i+1}`, totalScore: 0, finished: false, finishRank: null });
     }
     mode = document.getElementById('gameMode').value;
     pointsTarget = parseInt(document.getElementById('pointsTarget').value) || 1000;
     numRounds = parseInt(document.getElementById('numRounds').value) || 3;
     paletsPerRound = parseInt(document.getElementById('paletsPerRound').value) || 8;
-
-    currentRound = 1;
-    currentPlayerIndex = 0;
-    currentPalet = 1;
-    roundPoints = 0;
-    gameOver = false;
-    lastScores = [];
-    finishOrder = [];
-
+    currentRound = 1; currentPlayerIndex = 0; currentPalet = 1; roundPoints = 0;
+    gameOver = false; lastScores = []; finishOrder = [];
     document.getElementById('setup').classList.add('hidden');
     document.getElementById('game').classList.remove('hidden');
     document.getElementById('resultsScreen').classList.add('hidden');
@@ -556,49 +335,29 @@
 
   function updateUI() {
     if (gameOver) return;
-    
-    while (currentPlayerIndex < players.length && players[currentPlayerIndex].finished) {
-      currentPlayerIndex++;
-    }
-    
+    while (currentPlayerIndex < players.length && players[currentPlayerIndex].finished) currentPlayerIndex++;
     const unfinishedPlayers = players.filter(p => !p.finished);
     if (mode === 'points' && unfinishedPlayers.length <= 1) {
       if (unfinishedPlayers.length === 1) {
         const lastPlayer = unfinishedPlayers[0];
-        lastPlayer.finished = true;
-        lastPlayer.finishRank = finishOrder.length + 1;
-        finishOrder.push(lastPlayer);
+        lastPlayer.finished = true; lastPlayer.finishRank = finishOrder.length + 1; finishOrder.push(lastPlayer);
       }
-      showResults();
-      return;
+      showResults(); return;
     }
-
     if (currentPlayerIndex >= players.length) {
       currentPlayerIndex = 0;
-      if (mode === 'rounds') {
-        if (currentRound >= numRounds) {
-          showResults();
-          return;
-        }
-        currentRound++;
-      }
+      if (mode === 'rounds') { if (currentRound >= numRounds) { showResults(); return; } currentRound++; }
     }
-
     const player = players[currentPlayerIndex];
     document.getElementById('currentPlayerName').textContent = player.name;
     document.getElementById('roundPoints').textContent = roundPoints;
-
     const remainingContainer = document.getElementById('paletsRemaining');
     remainingContainer.innerHTML = '';
     for (let i = 0; i < paletsPerRound; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'palet-dot-small';
-      if (i < currentPalet - 1) {
-        dot.classList.add('used');
-      }
+      const dot = document.createElement('div'); dot.className = 'palet-dot-small';
+      if (i < currentPalet - 1) dot.classList.add('used');
       remainingContainer.appendChild(dot);
     }
-
     const sb = document.getElementById('scoreboard');
     sb.innerHTML = players.map(p => {
       let cls = (p === player) ? 'player-score current-player' : 'player-score';
@@ -608,95 +367,55 @@
   }
 
   function addScore(points) {
-    if (gameOver) return;
-    if (currentPalet > paletsPerRound) return;
-
-    roundPoints += points;
-    lastScores.push(points);
-    currentPalet++;
-
+    if (gameOver || currentPalet > paletsPerRound) return;
+    roundPoints += points; lastScores.push(points); currentPalet++;
     if (points === 2000) triggerFrogAnimation();
     else if (points === 1000) triggerMoulinAnimation();
-
-    if (currentPalet > paletsPerRound) {
-      endTurn();
-    } else {
-      updateUI();
-    }
+    if (currentPalet > paletsPerRound) endTurn(); else updateUI();
   }
 
   function undoLastScore() {
     if (gameOver || lastScores.length === 0) return;
-    const last = lastScores.pop();
-    roundPoints -= last;
-    currentPalet--;
-    updateUI();
+    const last = lastScores.pop(); roundPoints -= last; currentPalet--; updateUI();
   }
 
   function endTurn() {
     const player = players[currentPlayerIndex];
-    player.totalScore += roundPoints;
-    roundPoints = 0;
-    lastScores = [];
-    currentPalet = 1;
-
+    player.totalScore += roundPoints; roundPoints = 0; lastScores = []; currentPalet = 1;
     if (mode === 'points' && player.totalScore >= pointsTarget && !player.finished) {
-      player.finished = true;
-      player.finishRank = finishOrder.length + 1;
-      finishOrder.push(player);
+      player.finished = true; player.finishRank = finishOrder.length + 1; finishOrder.push(player);
     }
-
     currentPlayerIndex++;
-
     if (currentPlayerIndex >= players.length) {
       currentPlayerIndex = 0;
-      if (mode === 'rounds') {
-        if (currentRound >= numRounds) {
-          showResults();
-          return;
-        }
-        currentRound++;
-      }
+      if (mode === 'rounds') { if (currentRound >= numRounds) { showResults(); return; } currentRound++; }
     }
     updateUI();
   }
 
-  function endRoundEarly() {
-    if (gameOver) return;
-    endTurn();
-  }
+  function endRoundEarly() { if (!gameOver) endTurn(); }
 
   function showResults() {
     gameOver = true;
     document.getElementById('game').classList.add('hidden');
     document.getElementById('resultsScreen').classList.remove('hidden');
     document.getElementById('setup').classList.add('hidden');
-
     const finished = finishOrder;
     const unfinished = players.filter(p => !p.finished).sort((a, b) => b.totalScore - a.totalScore);
     const sorted = [...finished, ...unfinished];
-    
     const resultsList = document.getElementById('resultsList');
     resultsList.innerHTML = sorted.map((p, i) => {
-      let rankClass = 'rank-other';
-      let medal = '';
+      let rankClass = 'rank-other', medal = '';
       if (i === 0) { rankClass = 'rank-1'; medal = '🥇 '; }
       else if (i === 1) { rankClass = 'rank-2'; medal = '🥈 '; }
       else if (i === 2) { rankClass = 'rank-3'; medal = '🥉 '; }
       return `<div class="result-player ${rankClass}"><span>${medal}${i+1}. ${p.name}</span><span>${p.totalScore} pts</span></div>`;
     }).join('');
-
     launchConfetti('resultsConfetti');
   }
 
-  function showResetConfirm() {
-    document.getElementById('resetPopup').classList.remove('hidden');
-  }
-
-  function hideResetConfirm() {
-    document.getElementById('resetPopup').classList.add('hidden');
-  }
-
+  function showResetConfirm() { document.getElementById('resetPopup').classList.remove('hidden'); }
+  function hideResetConfirm() { document.getElementById('resetPopup').classList.add('hidden'); }
   function resetGame() {
     hideResetConfirm();
     document.getElementById('game').classList.add('hidden');
@@ -710,24 +429,15 @@
     area.innerHTML = '<div class="frog-anim">🐸</div>';
     setTimeout(() => { area.innerHTML = ''; }, 800);
   }
-
   function triggerMoulinAnimation() {
     const area = document.getElementById('animArea');
-    area.innerHTML = `
-      <div class="moulin">
-        <div class="blade"></div>
-        <div class="blade"></div>
-        <div class="blade"></div>
-        <div class="blade"></div>
-      </div>`;
+    area.innerHTML = '<div class="moulin"><div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div></div>';
     setTimeout(() => { area.innerHTML = ''; }, 1800);
   }
-
   function launchConfetti(areaId) {
     const area = document.getElementById(areaId);
     for (let i = 0; i < 50; i++) {
-      const conf = document.createElement('div');
-      conf.className = 'confetti';
+      const conf = document.createElement('div'); conf.className = 'confetti';
       conf.style.left = Math.random() * 100 + '%';
       conf.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
       conf.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 60%)`;
