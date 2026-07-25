@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- ✅ Icône pour iOS (iPhone/iPad) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🐸</text></svg>">
+  
+  <!-- ✅ Favicon pour navigateurs -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🐸</text></svg>">
+
   <title>Jeu de la Grenouille – Delorme</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -492,7 +499,7 @@
   let roundPoints = 0;
   let gameOver = false;
   let lastScores = [];
-  let finishOrder = []; // Ordre d'arrivée
+  let finishOrder = [];
 
   function generateNameInputs() {
     const n = parseInt(document.getElementById('numPlayers').value);
@@ -525,7 +532,7 @@
         name: nameInput ? (nameInput.value.trim() || `Joueur ${i+1}`) : `Joueur ${i+1}`,
         totalScore: 0,
         finished: false,
-        finishRank: null // rang d'arrivée
+        finishRank: null
       });
     }
     mode = document.getElementById('gameMode').value;
@@ -550,15 +557,12 @@
   function updateUI() {
     if (gameOver) return;
     
-    // Passer les joueurs déjà finis
     while (currentPlayerIndex < players.length && players[currentPlayerIndex].finished) {
       currentPlayerIndex++;
     }
     
-    // Vérifier s'il ne reste qu'un seul joueur non fini
     const unfinishedPlayers = players.filter(p => !p.finished);
     if (mode === 'points' && unfinishedPlayers.length <= 1) {
-      // Classer le dernier joueur s'il existe
       if (unfinishedPlayers.length === 1) {
         const lastPlayer = unfinishedPlayers[0];
         lastPlayer.finished = true;
@@ -636,7 +640,6 @@
     lastScores = [];
     currentPalet = 1;
 
-    // Vérifier si le joueur atteint l'objectif
     if (mode === 'points' && player.totalScore >= pointsTarget && !player.finished) {
       player.finished = true;
       player.finishRank = finishOrder.length + 1;
@@ -669,7 +672,6 @@
     document.getElementById('resultsScreen').classList.remove('hidden');
     document.getElementById('setup').classList.add('hidden');
 
-    // Trier : d'abord ceux qui ont fini (par ordre d'arrivée), puis les non finis (par score)
     const finished = finishOrder;
     const unfinished = players.filter(p => !p.finished).sort((a, b) => b.totalScore - a.totalScore);
     const sorted = [...finished, ...unfinished];
@@ -681,10 +683,6 @@
       if (i === 0) { rankClass = 'rank-1'; medal = '🥇 '; }
       else if (i === 1) { rankClass = 'rank-2'; medal = '🥈 '; }
       else if (i === 2) { rankClass = 'rank-3'; medal = '🥉 '; }
-      let extra = '';
-      if (p.finished && i === finished.length - 1 && i < players.length - 1) {
-        extra = ' (non terminé)';
-      }
       return `<div class="result-player ${rankClass}"><span>${medal}${i+1}. ${p.name}</span><span>${p.totalScore} pts</span></div>`;
     }).join('');
 
