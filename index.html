@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  
-  <!-- Icône iOS et Favicon (Twemoji via jsDelivr) -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f438.png">
   <link rel="icon" type="image/png" sizes="192x192" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f438.png">
-
   <title>Jeu de la Grenouille – Delorme</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,111 +40,65 @@
       justify-content: center;
       gap: 12px;
     }
-    .header-frog {
-      font-size: 3.5rem;
-      line-height: 1;
-      filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.5));
-      animation: frogWiggle 3s ease-in-out infinite;
-    }
-    @keyframes frogWiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-5deg); }
-      75% { transform: rotate(5deg); }
-    }
-    .header-text {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      line-height: 1.3;
-    }
+    .header-frog { font-size: 3.5rem; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.5)); animation: frogWiggle 3s ease-in-out infinite; }
+    @keyframes frogWiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-5deg)} 75%{transform:rotate(5deg)} }
+    .header-text { font-size: 1.5rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; line-height: 1.3; }
     button {
-      border: none;
-      margin: 5px 3px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      min-width: 50px;
+      border: none; margin: 5px 3px; font-size: 1.3rem; font-weight: bold; cursor: pointer; transition: 0.2s; min-width: 50px;
     }
     button:active { transform: translateY(3px); }
-    .score-btn { 
-      font-size: 1.2rem; 
-      padding: 0;
-      border-radius: 50%;
-      width: 64px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      line-height: 1.2;
+    .score-btn {
+      font-size: 1.2rem; padding: 0; border-radius: 50%; width: 64px; height: 64px;
+      display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.2;
       text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
     .btn-or {
       background: radial-gradient(circle at 35% 30%, #ffe566 0%, #f9c74f 30%, #d4a017 70%, #b8860b 100%);
-      color: #3a2500;
-      border: 3px solid #ffd700;
-      box-shadow: 0 5px 0 #8b6914, 0 8px 18px rgba(218,165,32,0.5);
+      color: #3a2500; border: 3px solid #ffd700; box-shadow: 0 5px 0 #8b6914, 0 8px 18px rgba(218,165,32,0.5);
     }
     .btn-argent {
       background: radial-gradient(circle at 35% 30%, #f8f8f8 0%, #d8d8d8 30%, #a8a8a8 70%, #787878 100%);
-      color: #1b1b1b;
-      border: 3px solid #c0c0c0;
-      box-shadow: 0 5px 0 #5a5a5a, 0 8px 16px rgba(192,192,192,0.5);
+      color: #1b1b1b; border: 3px solid #c0c0c0; box-shadow: 0 5px 0 #5a5a5a, 0 8px 16px rgba(192,192,192,0.5);
     }
     .btn-bronze {
       background: radial-gradient(circle at 35% 30%, #f0d0a8 0%, #cd7f32 40%, #a0522d 80%, #6b3a1f 100%);
-      color: #fff;
-      border: 3px solid #daa06d;
-      box-shadow: 0 5px 0 #5c3317, 0 8px 16px rgba(205,127,50,0.5);
+      color: #fff; border: 3px solid #daa06d; box-shadow: 0 5px 0 #5c3317, 0 8px 16px rgba(205,127,50,0.5);
     }
     .btn-zero {
       background: radial-gradient(circle at 35% 30%, #666 0%, #444 40%, #222 80%, #111 100%);
-      color: #fff;
-      border: 3px solid #555;
-      box-shadow: 0 5px 0 #1a1a1a, 0 8px 16px rgba(0,0,0,0.5);
+      color: #fff; border: 3px solid #555; box-shadow: 0 5px 0 #1a1a1a, 0 8px 16px rgba(0,0,0,0.5);
     }
-    .action-btn, .reset-btn { 
-      background: #f9c74f;
-      color: #1b4a2e;
-      border: 3px solid #ffe5a3;
-      font-size: 1.1rem; 
-      border-radius: 25px;
-      padding: 12px 18px;
+    .action-btn, .reset-btn, .rules-btn {
+      background: #f9c74f; color: #1b4a2e; border: 3px solid #ffe5a3;
+      font-size: 1.1rem; border-radius: 25px; padding: 12px 18px;
       box-shadow: 0 5px 0 #b07d2b, 0 6px 12px rgba(0,0,0,0.3);
     }
+    .rules-btn { background: #e9c46a; }
     .confirm-btn {
-      background: #2a9d8f;
-      color: white;
-      border: 3px solid #48cae4;
-      font-size: 1.1rem;
-      border-radius: 25px;
-      padding: 12px 18px;
-      box-shadow: 0 5px 0 #1a5c50;
+      background: #2a9d8f; color: white; border: 3px solid #48cae4;
+      font-size: 1.1rem; border-radius: 25px; padding: 12px 18px; box-shadow: 0 5px 0 #1a5c50;
     }
     input, select {
-      padding: 12px;
-      border-radius: 14px;
-      border: none;
-      font-size: 1.1rem;
-      margin: 8px 5px;
-      width: 80%;
-      background: white;
+      padding: 12px; border-radius: 14px; border: none; font-size: 1.1rem;
+      margin: 8px 5px; width: 80%; background: white;
     }
-    .players-setup input { width: 60%; }
+    .players-setup input, .team-members input { width: 60%; margin: 4px; }
     .row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin: 12px 0; }
     .scoreboard { margin: 15px 0; }
-    .player-score { display: flex; justify-content: space-between; font-size: 1.3rem; padding: 8px 15px; margin: 4px 0; }
+    .player-score {
+      display: flex; justify-content: space-between; font-size: 1.3rem; padding: 8px 15px; margin: 4px 0;
+    }
     .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 10px; }
-    .current-player-info { font-size: 1.5rem; margin: 10px 0; color: #f9c74f; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .current-player-info {
+      font-size: 1.5rem; margin: 10px 0; color: #f9c74f;
+      display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
     .round-points-box { font-size: 2rem; font-weight: bold; margin: 5px 0 15px; color: #f9c74f; }
     .palets-remaining { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
     .palet-dot-small {
       width: 16px; height: 16px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
-      border: 2px solid #4a4a4a;
-      box-shadow: 0 2px 3px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+      border: 2px solid #4a4a4a; box-shadow: 0 2px 3px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
       transition: all 0.3s ease;
     }
     .palet-dot-small.used {
@@ -159,52 +110,97 @@
     .palet-dot {
       width: 20px; height: 20px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
-      border: 2px solid #4a4a4a;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.1);
+      border: 2px solid #4a4a4a; box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.1);
     }
-    .confirm-popup {
+    .confirm-popup, .rules-popup {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 100;
     }
-    .confirm-box {
-      background: #2d6a3f; border: 4px solid #f9c74f; border-radius: 20px; padding: 25px; text-align: center; max-width: 350px; width: 90%;
+    .confirm-box, .rules-box {
+      background: #2d6a3f; border: 4px solid #f9c74f; border-radius: 20px;
+      padding: 25px; text-align: center; max-width: 500px; width: 90%;
+      max-height: 80vh; overflow-y: auto; color: #fff;
     }
+    .rules-box { text-align: left; font-size: 1rem; line-height: 1.5; }
+    .rules-box h2 { text-align: center; margin-bottom: 15px; }
     .confirm-box p { font-size: 1.3rem; font-weight: bold; margin-bottom: 20px; }
-    .confirm-box .row { gap: 20px; }
+    .confirm-box .row, .rules-box .row { gap: 20px; }
     .animation-area { position: relative; height: 90px; overflow: hidden; margin-top: 8px; }
     .frog-anim { font-size: 5rem; position: absolute; left: 50%; transform: translateX(-50%); animation: bounce 0.6s ease; }
-    @keyframes bounce {
-      0% { top: 50px; } 30% { top: -10px; } 50% { top: 20px; } 70% { top: -5px; } 100% { top: 50px; }
-    }
+    @keyframes bounce { 0%{top:50px} 30%{top:-10px} 50%{top:20px} 70%{top:-5px} 100%{top:50px} }
     .moulin { width: 70px; height: 70px; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); animation: spin 1.5s linear infinite; }
     .blade {
       position: absolute; width: 14px; height: 42px; background: #c2a26b; left: 28px; top: 14px;
       border-radius: 10px; transform-origin: 50% 21px;
     }
-    .blade:nth-child(1) { transform: rotate(0deg); }
-    .blade:nth-child(2) { transform: rotate(90deg); }
-    .blade:nth-child(3) { transform: rotate(180deg); }
-    .blade:nth-child(4) { transform: rotate(270deg); }
-    @keyframes spin { 100% { transform: translateX(-50%) rotate(360deg); } }
-    .result-player { display: flex; justify-content: space-between; font-size: 1.2rem; padding: 10px 18px; margin: 5px 0; border-radius: 12px; }
-    .rank-1 { background: #ffd700; color: #3a2500; font-weight: bold; font-size: 1.4rem; }
-    .rank-2 { background: #c0c0c0; color: #1b1b1b; font-weight: bold; font-size: 1.3rem; }
-    .rank-3 { background: #cd7f32; color: #fff; font-weight: bold; font-size: 1.2rem; }
-    .rank-other { background: rgba(255,255,255,0.1); }
+    .blade:nth-child(1){transform:rotate(0)} .blade:nth-child(2){transform:rotate(90deg)} .blade:nth-child(3){transform:rotate(180deg)} .blade:nth-child(4){transform:rotate(270deg)}
+    @keyframes spin { 100%{transform:translateX(-50%) rotate(360deg)} }
+    
+    /* Podium */
+    .podium-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 15px;
+      margin: 20px 0 10px;
+      padding: 10px;
+    }
+    .podium-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      border-radius: 15px 15px 0 0;
+      padding: 15px 10px;
+      width: 120px;
+      color: #000;
+      font-weight: bold;
+      transition: all 0.5s ease;
+    }
+    .podium-step-1 { background: #ffd700; height: 160px; border: 3px solid #b8860b; }
+    .podium-step-2 { background: #c0c0c0; height: 130px; border: 3px solid #808080; }
+    .podium-step-3 { background: #cd7f32; height: 100px; border: 3px solid #8b4513; color: #fff; }
+    .podium-step .medal { font-size: 2.5rem; margin-bottom: 5px; }
+    .podium-step .name { font-size: 1rem; text-transform: uppercase; }
+    .podium-step .score { font-size: 0.9rem; margin-top: 5px; }
+    .other-results {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 10px;
+    }
+    .other-result-item {
+      background: rgba(255,255,255,0.15);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+    }
+
     .hidden { display: none; }
     .btn-start {
       font-size: 1.8rem; padding: 16px 40px; background: #f9c74f; color: #1b4a2e;
       border: 3px solid #ffe5a3; margin-top: 20px; border-radius: 30px; letter-spacing: 2px; box-shadow: 0 5px 0 #b07d2b;
     }
     label { font-weight: bold; color: #f9c74f; font-size: 1.1rem; display: block; margin-top: 8px; }
-    .setup-title {
-      font-size: 1.3rem; font-weight: bold; color: #f9c74f; margin-bottom: 15px;
-      display: flex; align-items: center; justify-content: center; gap: 15px;
+    .setup-title { font-size: 1.3rem; font-weight: bold; color: #f9c74f; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+    .team-section { margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 15px; }
+    .team-section h3 { color: #f9c74f; margin-bottom: 5px; }
+    .confetti {
+      position: absolute; width: 12px; height: 12px; border-radius: 50%;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(280px) rotate(720deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
 <div class="container" id="app">
+  <!-- Page configuration -->
   <div id="setup">
     <div class="app-header">
       <span class="header-frog">🐸</span>
@@ -216,15 +212,38 @@
       Paramètres de la partie
       <div class="palet-pyramid"><div class="palet-dot"></div><div class="row-two"><div class="palet-dot"></div><div class="palet-dot"></div></div></div>
     </div>
-    <div><label>Nombre de joueurs :</label><input type="number" id="numPlayers" min="1" max="6" value="2" onchange="generateNameInputs()"></div>
-    <div id="nameInputs" class="players-setup"></div>
-    <div><label>Mode de jeu :</label><select id="gameMode" onchange="toggleMode()"><option value="points">Points à atteindre</option><option value="rounds">Nombre de manches</option></select></div>
+    <div>
+      <label>Mode de jeu :</label>
+      <select id="gameModeType" onchange="toggleGameModeType()">
+        <option value="individuel">Individuel</option>
+        <option value="equipe">Par équipe</option>
+      </select>
+    </div>
+    <div id="individuelOptions">
+      <div><label>Nombre de joueurs :</label><input type="number" id="numPlayers" min="1" max="6" value="2" onchange="generateNameInputs()"></div>
+      <div id="nameInputs" class="players-setup"></div>
+    </div>
+    <div id="equipeOptions" class="hidden">
+      <div><label>Nombre d'équipes :</label><input type="number" id="numTeams" min="1" max="4" value="2" onchange="generateTeamInputs()"></div>
+      <div id="teamsContainer"></div>
+    </div>
+    <div>
+      <label>Mode de score :</label>
+      <select id="gameMode" onchange="toggleMode()">
+        <option value="points">Points à atteindre</option>
+        <option value="rounds">Nombre de manches</option>
+      </select>
+    </div>
     <div id="pointsTargetDiv"><label>Points à atteindre :</label><input type="number" id="pointsTarget" min="100" value="1000" step="100"></div>
     <div id="roundsDiv" class="hidden"><label>Nombre de manches :</label><input type="number" id="numRounds" min="1" value="3"></div>
-    <div><label>Palets par joueur / manche :</label><input type="number" id="paletsPerRound" min="1" value="8"></div>
+    <div><label>Palets par joueur/équipe par manche :</label><input type="number" id="paletsPerRound" min="1" value="8"></div>
     <button class="btn-start" onclick="startGame()">LANCER LA PARTIE</button>
+    <div style="margin-top:15px;">
+      <button class="rules-btn" onclick="showRules()">📖 Règles du jeu</button>
+    </div>
   </div>
 
+  <!-- Page jeu -->
   <div id="game" class="hidden">
     <div class="app-header" style="margin-bottom:15px; padding:12px;">
       <span class="header-frog" style="font-size:2.5rem;">🐸</span>
@@ -232,7 +251,10 @@
       <span class="header-frog" style="font-size:2.5rem;">🐸</span>
     </div>
     <div class="scoreboard" id="scoreboard"></div>
-    <div class="current-player-info"><strong><span id="currentPlayerName"></span></strong><div class="palets-remaining" id="paletsRemaining"></div></div>
+    <div class="current-player-info">
+      <strong><span id="currentPlayerName"></span></strong>
+      <div class="palets-remaining" id="paletsRemaining"></div>
+    </div>
     <div>Points marqués ce tour :</div>
     <div class="round-points-box"><span id="roundPoints">0</span></div>
     <div class="row">
@@ -262,40 +284,78 @@
       <button class="action-btn" onclick="undoLastScore()">Annuler</button>
       <button class="action-btn" onclick="endRoundEarly()">Finir la manche</button>
       <button class="reset-btn" onclick="showResetConfirm()">Nouvelle partie</button>
+      <button class="rules-btn" onclick="showRules()">📖 Règles</button>
     </div>
     <div class="animation-area" id="animArea"></div>
   </div>
 
+  <!-- Page résultats -->
   <div id="resultsScreen" class="hidden">
-    <div class="app-header" style="margin-bottom:25px;">
-      <span class="header-frog" style="font-size:3rem;">🐸</span>
+    <div class="app-header" style="margin-bottom:15px;">
+      <span class="header-frog" style="font-size:2.5rem;">🐸</span>
       <div class="header-text">CLASSEMENT<br>FINAL</div>
-      <span class="header-frog" style="font-size:3rem;">🐸</span>
+      <span class="header-frog" style="font-size:2.5rem;">🐸</span>
     </div>
-    <div id="resultsList"></div>
-    <div class="animation-area" id="resultsConfetti" style="height:180px;"></div>
+    <div id="podiumArea"></div>
+    <div class="animation-area" id="resultsConfetti" style="height:180px; position:relative;"></div>
     <button class="btn-start" onclick="resetGame()" style="margin-top:20px;">Nouvelle partie</button>
   </div>
-</div>
 
-<div id="resetPopup" class="confirm-popup hidden">
-  <div class="confirm-box">
-    <p>⚠️ Réinitialiser la partie ?</p>
-    <p style="font-size:1rem; font-weight:normal;">Tous les scores seront effacés.</p>
-    <div class="row">
-      <button class="confirm-btn" onclick="resetGame()">✅ Oui</button>
-      <button class="reset-btn" onclick="hideResetConfirm()">❌ Non</button>
+  <!-- Popup règles -->
+  <div id="rulesPopup" class="rules-popup hidden">
+    <div class="rules-box">
+      <h2>📖 Règles du jeu</h2>
+      <p>Le jeu de la Grenouille se pratique en plein air ou à l'intérieur.</p>
+      <p>La PARTIE peut se jouer :</p>
+      <ul style="margin-left:20px;">
+        <li>Individuellement, dans ce cas, chaque joueur peut utiliser ses 8 palets.</li>
+        <li>Par équipe, les palets étant alors partagés entre les joueurs, en une ou plusieurs manches dont le nombre est décidé à l'avance.</li>
+      </ul>
+      <p>Le vainqueur sera celui qui aura accumulé le plus de points.</p>
+      <p>Sur un nombre de points déterminés à l'avance, le premier joueur qui atteint ce nombre est désigné vainqueur.</p>
+      <p>On tire au sort le joueur ou l'équipe qui jouera en premier.</p>
+      <p>Chaque joueur se place à environ 3 mètres du jeu.</p>
+      <p><strong>Bonus :</strong> L'équipe ou le joueur qui réussit la "Grenouille" 4 fois sur 8 palets dans une même partie marque 1000 points supplémentaires.</p>
+      <div class="row" style="justify-content:center; margin-top:20px;">
+        <button class="action-btn" onclick="hideRules()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup confirmation reset -->
+  <div id="resetPopup" class="confirm-popup hidden">
+    <div class="confirm-box">
+      <p>⚠️ Réinitialiser la partie ?</p>
+      <p style="font-size:1rem; font-weight:normal;">Tous les scores seront effacés.</p>
+      <div class="row">
+        <button class="confirm-btn" onclick="resetGame()">✅ Oui</button>
+        <button class="reset-btn" onclick="hideResetConfirm()">❌ Non</button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  let players = [], mode = 'points', pointsTarget = 1000, numRounds = 3, paletsPerRound = 8;
-  let currentRound = 0, currentPlayerIndex = 0, currentPalet = 1, roundPoints = 0;
-  let gameOver = false, lastScores = [], finishOrder = [];
+  let players = [];
+  let teams = [];
+  let mode = 'points';
+  let pointsTarget = 1000;
+  let numRounds = 3;
+  let paletsPerRound = 8;
+  let currentRound = 0;
+  let currentPlayerIndex = 0;
+  let currentTeamIndex = 0;
+  let currentMemberIndex = 0;
+  let currentPalet = 1;
+  let roundPoints = 0;
+  let gameOver = false;
+  let lastScores = [];
+  let finishOrder = [];
+  let gameModeType = 'individuel';
+  let teamMembersData = [];
 
   function generateNameInputs() {
-    const n = parseInt(document.getElementById('numPlayers').value);
+    const n = parseInt(document.getElementById('numPlayers').value) || 2;
     const container = document.getElementById('nameInputs');
     container.innerHTML = '';
     for (let i = 0; i < n; i++) {
@@ -307,6 +367,48 @@
   }
   generateNameInputs();
 
+  function generateTeamInputs() {
+    const n = parseInt(document.getElementById('numTeams').value) || 2;
+    const container = document.getElementById('teamsContainer');
+    container.innerHTML = '';
+    for (let i = 0; i < n; i++) {
+      const div = document.createElement('div');
+      div.className = 'team-section';
+      div.innerHTML = `
+        <h3>Équipe ${i+1}</h3>
+        <label>Nom de l'équipe :</label>
+        <input type="text" id="teamName${i}" placeholder="Équipe ${i+1}" value="Équipe ${i+1}">
+        <label>Nombre de membres :</label>
+        <input type="number" id="teamMembersCount${i}" min="1" max="4" value="2" onchange="generateMemberInputs(${i})">
+        <div id="teamMembers${i}" class="team-members"></div>
+      `;
+      container.appendChild(div);
+      generateMemberInputs(i);
+    }
+  }
+
+  function generateMemberInputs(teamIndex) {
+    const count = parseInt(document.getElementById(`teamMembersCount${teamIndex}`).value) || 2;
+    const container = document.getElementById(`teamMembers${teamIndex}`);
+    container.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.id = `team${teamIndex}Member${i}`;
+      input.placeholder = `Joueur ${i+1}`;
+      container.appendChild(input);
+    }
+  }
+
+  function toggleGameModeType() {
+    const type = document.getElementById('gameModeType').value;
+    gameModeType = type;
+    document.getElementById('individuelOptions').classList.toggle('hidden', type !== 'individuel');
+    document.getElementById('equipeOptions').classList.toggle('hidden', type !== 'equipe');
+    if (type === 'equipe') generateTeamInputs();
+  }
+  toggleGameModeType();
+
   function toggleMode() {
     const modeSel = document.getElementById('gameMode').value;
     document.getElementById('pointsTargetDiv').classList.toggle('hidden', modeSel !== 'points');
@@ -314,103 +416,348 @@
   }
   toggleMode();
 
+  function showRules() { document.getElementById('rulesPopup').classList.remove('hidden'); }
+  function hideRules() { document.getElementById('rulesPopup').classList.add('hidden'); }
+
   function startGame() {
-    const n = parseInt(document.getElementById('numPlayers').value);
-    players = [];
-    for (let i = 0; i < n; i++) {
-      const nameInput = document.getElementById(`playerName${i}`);
-      players.push({ name: nameInput ? (nameInput.value.trim() || `Joueur ${i+1}`) : `Joueur ${i+1}`, totalScore: 0, finished: false, finishRank: null });
-    }
+    const type = document.getElementById('gameModeType').value;
+    gameModeType = type;
     mode = document.getElementById('gameMode').value;
     pointsTarget = parseInt(document.getElementById('pointsTarget').value) || 1000;
     numRounds = parseInt(document.getElementById('numRounds').value) || 3;
     paletsPerRound = parseInt(document.getElementById('paletsPerRound').value) || 8;
-    currentRound = 1; currentPlayerIndex = 0; currentPalet = 1; roundPoints = 0;
-    gameOver = false; lastScores = []; finishOrder = [];
+
+    if (type === 'individuel') {
+      const n = parseInt(document.getElementById('numPlayers').value) || 2;
+      players = [];
+      for (let i = 0; i < n; i++) {
+        const nameInput = document.getElementById(`playerName${i}`);
+        const name = nameInput ? (nameInput.value.trim() || `Joueur ${i+1}`) : `Joueur ${i+1}`;
+        players.push({ name, totalScore: 0, finished: false, finishRank: null });
+      }
+      teams = [];
+      currentPlayerIndex = 0;
+    } else {
+      const numTeams = parseInt(document.getElementById('numTeams').value) || 2;
+      teams = [];
+      for (let t = 0; t < numTeams; t++) {
+        const teamNameInput = document.getElementById(`teamName${t}`);
+        const teamName = teamNameInput ? (teamNameInput.value.trim() || `Équipe ${t+1}`) : `Équipe ${t+1}`;
+        const membersCount = parseInt(document.getElementById(`teamMembersCount${t}`).value) || 2;
+        const members = [];
+        for (let m = 0; m < membersCount; m++) {
+          const memberInput = document.getElementById(`team${t}Member${m}`);
+          const memberName = memberInput ? (memberInput.value.trim() || `Joueur ${m+1}`) : `Joueur ${m+1}`;
+          members.push({ name: memberName });
+        }
+        teams.push({ name: teamName, members, totalScore: 0, finished: false, finishRank: null });
+      }
+      players = [];
+      currentTeamIndex = 0;
+      currentMemberIndex = 0;
+      allocatePaletsToTeamMembers();
+    }
+
+    currentRound = 1;
+    currentPalet = 1;
+    roundPoints = 0;
+    gameOver = false;
+    lastScores = [];
+    finishOrder = [];
+
     document.getElementById('setup').classList.add('hidden');
     document.getElementById('game').classList.remove('hidden');
     document.getElementById('resultsScreen').classList.add('hidden');
     updateUI();
   }
 
+  function allocatePaletsToTeamMembers() {
+    if (gameModeType !== 'equipe') return;
+    const team = teams[currentTeamIndex];
+    if (!team) return;
+    const count = team.members.length;
+    const base = Math.floor(paletsPerRound / count);
+    const remainder = paletsPerRound % count;
+    teamMembersData = team.members.map((_, i) => ({
+      assigned: base + (i < remainder ? 1 : 0),
+      used: 0
+    }));
+    currentMemberIndex = 0;
+  }
+
   function updateUI() {
     if (gameOver) return;
-    while (currentPlayerIndex < players.length && players[currentPlayerIndex].finished) currentPlayerIndex++;
-    const unfinishedPlayers = players.filter(p => !p.finished);
-    if (mode === 'points' && unfinishedPlayers.length <= 1) {
-      if (unfinishedPlayers.length === 1) {
-        const lastPlayer = unfinishedPlayers[0];
-        lastPlayer.finished = true; lastPlayer.finishRank = finishOrder.length + 1; finishOrder.push(lastPlayer);
+
+    if (gameModeType === 'individuel') {
+      while (currentPlayerIndex < players.length && players[currentPlayerIndex].finished) {
+        currentPlayerIndex++;
       }
-      showResults(); return;
+      const unfinishedPlayers = players.filter(p => !p.finished);
+      if (mode === 'points' && unfinishedPlayers.length <= 1) {
+        if (unfinishedPlayers.length === 1) {
+          const lastPlayer = unfinishedPlayers[0];
+          lastPlayer.finished = true;
+          lastPlayer.finishRank = finishOrder.length + 1;
+          finishOrder.push(lastPlayer);
+        }
+        showResults();
+        return;
+      }
+      if (currentPlayerIndex >= players.length) {
+        currentPlayerIndex = 0;
+        if (mode === 'rounds') {
+          if (currentRound >= numRounds) {
+            showResults();
+            return;
+          }
+          currentRound++;
+        }
+      }
+      const player = players[currentPlayerIndex];
+      document.getElementById('currentPlayerName').textContent = player.name;
+      document.getElementById('roundPoints').textContent = roundPoints;
+      renderPaletsRemaining(paletsPerRound, currentPalet - 1);
+      renderScoreboardIndividuel(player);
+    } else {
+      while (currentTeamIndex < teams.length && teams[currentTeamIndex].finished) {
+        currentTeamIndex++;
+      }
+      const unfinishedTeams = teams.filter(t => !t.finished);
+      if (mode === 'points' && unfinishedTeams.length <= 1) {
+        if (unfinishedTeams.length === 1) {
+          const lastTeam = unfinishedTeams[0];
+          lastTeam.finished = true;
+          lastTeam.finishRank = finishOrder.length + 1;
+          finishOrder.push(lastTeam);
+        }
+        showResults();
+        return;
+      }
+      if (currentTeamIndex >= teams.length) {
+        currentTeamIndex = 0;
+        if (mode === 'rounds') {
+          if (currentRound >= numRounds) {
+            showResults();
+            return;
+          }
+          currentRound++;
+        }
+      }
+      if (!teamMembersData || teamMembersData.length === 0 || teamMembersData.every(m => m.assigned === 0)) {
+        allocatePaletsToTeamMembers();
+      }
+      const team = teams[currentTeamIndex];
+      if (!team) return;
+
+      const allMembersDone = teamMembersData.every(m => m.used >= m.assigned);
+      if (allMembersDone) {
+        endTurnEquipe();
+        return;
+      }
+
+      while (currentMemberIndex < teamMembersData.length && teamMembersData[currentMemberIndex].used >= teamMembersData[currentMemberIndex].assigned) {
+        currentMemberIndex++;
+      }
+      if (currentMemberIndex >= teamMembersData.length) {
+        currentMemberIndex = 0;
+        while (currentMemberIndex < teamMembersData.length && teamMembersData[currentMemberIndex].used >= teamMembersData[currentMemberIndex].assigned) {
+          currentMemberIndex++;
+        }
+      }
+
+      const memberData = teamMembersData[currentMemberIndex];
+      const member = team.members[currentMemberIndex];
+      document.getElementById('currentPlayerName').textContent = `${team.name} - ${member.name}`;
+      document.getElementById('roundPoints').textContent = roundPoints;
+      renderPaletsRemaining(memberData.assigned, memberData.used);
+      renderScoreboardEquipe(team);
     }
-    if (currentPlayerIndex >= players.length) {
-      currentPlayerIndex = 0;
-      if (mode === 'rounds') { if (currentRound >= numRounds) { showResults(); return; } currentRound++; }
+  }
+
+  function renderPaletsRemaining(total, used) {
+    const container = document.getElementById('paletsRemaining');
+    container.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'palet-dot-small';
+      if (i < used) dot.classList.add('used');
+      container.appendChild(dot);
     }
-    const player = players[currentPlayerIndex];
-    document.getElementById('currentPlayerName').textContent = player.name;
-    document.getElementById('roundPoints').textContent = roundPoints;
-    const remainingContainer = document.getElementById('paletsRemaining');
-    remainingContainer.innerHTML = '';
-    for (let i = 0; i < paletsPerRound; i++) {
-      const dot = document.createElement('div'); dot.className = 'palet-dot-small';
-      if (i < currentPalet - 1) dot.classList.add('used');
-      remainingContainer.appendChild(dot);
-    }
+  }
+
+  function renderScoreboardIndividuel(currentPlayer) {
     const sb = document.getElementById('scoreboard');
     sb.innerHTML = players.map(p => {
-      let cls = (p === player) ? 'player-score current-player' : 'player-score';
-      let finishMark = p.finished ? ` (${p.finishRank}er)` : '';
-      return `<div class="${cls}"><span>${p.name}${finishMark}</span><span>${p.totalScore} pts</span></div>`;
+      let cls = (p === currentPlayer) ? 'player-score current-player' : 'player-score';
+      let mark = p.finished ? ` (${p.finishRank}er)` : '';
+      return `<div class="${cls}"><span>${p.name}${mark}</span><span>${p.totalScore} pts</span></div>`;
+    }).join('');
+  }
+
+  function renderScoreboardEquipe(currentTeam) {
+    const sb = document.getElementById('scoreboard');
+    sb.innerHTML = teams.map(t => {
+      let cls = (t === currentTeam) ? 'player-score current-player' : 'player-score';
+      let mark = t.finished ? ` (${t.finishRank}er)` : '';
+      return `<div class="${cls}"><span>${t.name}${mark}</span><span>${t.totalScore} pts</span></div>`;
     }).join('');
   }
 
   function addScore(points) {
-    if (gameOver || currentPalet > paletsPerRound) return;
-    roundPoints += points; lastScores.push(points); currentPalet++;
-    if (points === 2000) triggerFrogAnimation();
-    else if (points === 1000) triggerMoulinAnimation();
-    if (currentPalet > paletsPerRound) endTurn(); else updateUI();
+    if (gameOver) return;
+    if (gameModeType === 'individuel') {
+      if (currentPalet > paletsPerRound) return;
+      roundPoints += points;
+      lastScores.push(points);
+      currentPalet++;
+      if (points === 2000) triggerFrogAnimation();
+      else if (points === 1000) triggerMoulinAnimation();
+      if (currentPalet > paletsPerRound) endTurnIndividuel();
+      else updateUI();
+    } else {
+      if (!teamMembersData.length) return;
+      const memberData = teamMembersData[currentMemberIndex];
+      if (memberData.used >= memberData.assigned) return;
+      roundPoints += points;
+      lastScores.push(points);
+      memberData.used++;
+      if (points === 2000) triggerFrogAnimation();
+      else if (points === 1000) triggerMoulinAnimation();
+      updateUI();
+    }
   }
 
   function undoLastScore() {
     if (gameOver || lastScores.length === 0) return;
-    const last = lastScores.pop(); roundPoints -= last; currentPalet--; updateUI();
-  }
-
-  function endTurn() {
-    const player = players[currentPlayerIndex];
-    player.totalScore += roundPoints; roundPoints = 0; lastScores = []; currentPalet = 1;
-    if (mode === 'points' && player.totalScore >= pointsTarget && !player.finished) {
-      player.finished = true; player.finishRank = finishOrder.length + 1; finishOrder.push(player);
-    }
-    currentPlayerIndex++;
-    if (currentPlayerIndex >= players.length) {
-      currentPlayerIndex = 0;
-      if (mode === 'rounds') { if (currentRound >= numRounds) { showResults(); return; } currentRound++; }
+    const last = lastScores.pop();
+    roundPoints -= last;
+    if (gameModeType === 'individuel') {
+      currentPalet--;
+    } else {
+      const memberData = teamMembersData[currentMemberIndex];
+      memberData.used--;
+      if (memberData.used < 0) memberData.used = 0;
     }
     updateUI();
   }
 
-  function endRoundEarly() { if (!gameOver) endTurn(); }
+  function endTurnIndividuel() {
+    const player = players[currentPlayerIndex];
+    player.totalScore += roundPoints;
+    roundPoints = 0;
+    lastScores = [];
+    currentPalet = 1;
+
+    if (mode === 'points' && player.totalScore >= pointsTarget && !player.finished) {
+      player.finished = true;
+      player.finishRank = finishOrder.length + 1;
+      finishOrder.push(player);
+    }
+    currentPlayerIndex++;
+    if (currentPlayerIndex >= players.length) {
+      currentPlayerIndex = 0;
+      if (mode === 'rounds') {
+        if (currentRound >= numRounds) {
+          showResults();
+          return;
+        }
+        currentRound++;
+      }
+    }
+    updateUI();
+  }
+
+  function endTurnEquipe() {
+    const team = teams[currentTeamIndex];
+    team.totalScore += roundPoints;
+    roundPoints = 0;
+    lastScores = [];
+
+    if (mode === 'points' && team.totalScore >= pointsTarget && !team.finished) {
+      team.finished = true;
+      team.finishRank = finishOrder.length + 1;
+      finishOrder.push(team);
+    }
+
+    currentTeamIndex++;
+    if (currentTeamIndex >= teams.length) {
+      currentTeamIndex = 0;
+      if (mode === 'rounds') {
+        if (currentRound >= numRounds) {
+          showResults();
+          return;
+        }
+        currentRound++;
+      }
+    }
+    allocatePaletsToTeamMembers();
+    updateUI();
+  }
+
+  function endRoundEarly() {
+    if (gameOver) return;
+    if (gameModeType === 'individuel') endTurnIndividuel();
+    else endTurnEquipe();
+  }
 
   function showResults() {
     gameOver = true;
     document.getElementById('game').classList.add('hidden');
     document.getElementById('resultsScreen').classList.remove('hidden');
     document.getElementById('setup').classList.add('hidden');
-    const finished = finishOrder;
-    const unfinished = players.filter(p => !p.finished).sort((a, b) => b.totalScore - a.totalScore);
-    const sorted = [...finished, ...unfinished];
-    const resultsList = document.getElementById('resultsList');
-    resultsList.innerHTML = sorted.map((p, i) => {
-      let rankClass = 'rank-other', medal = '';
-      if (i === 0) { rankClass = 'rank-1'; medal = '🥇 '; }
-      else if (i === 1) { rankClass = 'rank-2'; medal = '🥈 '; }
-      else if (i === 2) { rankClass = 'rank-3'; medal = '🥉 '; }
-      return `<div class="result-player ${rankClass}"><span>${medal}${i+1}. ${p.name}</span><span>${p.totalScore} pts</span></div>`;
-    }).join('');
+
+    let sorted = [];
+    if (gameModeType === 'individuel') {
+      const finished = finishOrder.filter(p => !p.teamName);
+      const unfinished = players.filter(p => !p.finished).sort((a, b) => b.totalScore - a.totalScore);
+      sorted = [...finished, ...unfinished];
+    } else {
+      const finishedTeams = finishOrder.filter(t => t.members);
+      const unfinishedTeams = teams.filter(t => !t.finished).sort((a, b) => b.totalScore - a.totalScore);
+      sorted = [...finishedTeams, ...unfinishedTeams];
+    }
+
+    const podiumArea = document.getElementById('podiumArea');
+    podiumArea.innerHTML = '';
+
+    // Créer le podium pour les 3 premiers
+    if (sorted.length > 0) {
+      const podiumContainer = document.createElement('div');
+      podiumContainer.className = 'podium-container';
+      
+      const medals = ['🥇', '🥈', '🥉'];
+      const stepClasses = ['podium-step-1', 'podium-step-2', 'podium-step-3'];
+      // ordre d'affichage: 2,1,3 (pour que le 1er soit au centre)
+      const order = (sorted.length >= 2) ? [1, 0, 2] : (sorted.length === 1 ? [0] : [0, 1]);
+      
+      order.forEach((index, pos) => {
+        if (index < sorted.length) {
+          const entity = sorted[index];
+          const name = entity.members ? entity.name : entity.name;
+          const score = entity.totalScore;
+          const step = document.createElement('div');
+          step.className = `podium-step ${stepClasses[index]}`;
+          step.innerHTML = `<div class="medal">${medals[index]}</div><div class="name">${name}</div><div class="score">${score} pts</div>`;
+          podiumContainer.appendChild(step);
+        }
+      });
+      
+      podiumArea.appendChild(podiumContainer);
+    }
+
+    // Afficher les autres joueurs (au-delà du top 3)
+    if (sorted.length > 3) {
+      const otherDiv = document.createElement('div');
+      otherDiv.className = 'other-results';
+      for (let i = 3; i < sorted.length; i++) {
+        const entity = sorted[i];
+        const name = entity.members ? entity.name : entity.name;
+        const score = entity.totalScore;
+        otherDiv.innerHTML += `<div class="other-result-item"><span>${i+1}. ${name}</span><span>${score} pts</span></div>`;
+      }
+      podiumArea.appendChild(otherDiv);
+    }
+
     launchConfetti('resultsConfetti');
   }
 
@@ -421,7 +768,8 @@
     document.getElementById('game').classList.add('hidden');
     document.getElementById('resultsScreen').classList.add('hidden');
     document.getElementById('setup').classList.remove('hidden');
-    generateNameInputs();
+    if (gameModeType === 'individuel') generateNameInputs();
+    else generateTeamInputs();
   }
 
   function triggerFrogAnimation() {
@@ -436,13 +784,17 @@
   }
   function launchConfetti(areaId) {
     const area = document.getElementById(areaId);
-    for (let i = 0; i < 50; i++) {
-      const conf = document.createElement('div'); conf.className = 'confetti';
+    // Clear previous confetti
+    area.innerHTML = '';
+    for (let i = 0; i < 80; i++) {
+      const conf = document.createElement('div');
+      conf.className = 'confetti';
       conf.style.left = Math.random() * 100 + '%';
-      conf.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+      conf.style.animationDuration = (Math.random() * 3 + 2) + 's';
       conf.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 60%)`;
+      conf.style.animationDelay = Math.random() * 2 + 's';
       area.appendChild(conf);
-      setTimeout(() => conf.remove(), 4500);
+      setTimeout(() => conf.remove(), 5000);
     }
   }
 </script>
