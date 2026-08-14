@@ -30,7 +30,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      padding: 12px 12px 20px;
+      padding: 10px 10px 15px;
     }
     @media (min-width: 600px) {
       .container {
@@ -41,51 +41,49 @@
         height: calc(100vh - 30px);
         height: calc(100dvh - 30px);
         max-height: 900px;
-        max-width: 550px;
+        max-width: 600px;
       }
     }
     .app-header {
       background: #f9c74f;
       color: #1b4a2e;
-      padding: 10px 12px;
+      padding: 8px 10px;
       border-radius: 15px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       flex-shrink: 0;
     }
     .header-frog { 
-      font-size: 2.8rem; 
+      font-size: 2.5rem; 
       filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.5)); 
       animation: frogWiggle 3s ease-in-out infinite; 
     }
     @keyframes frogWiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-5deg)} 75%{transform:rotate(5deg)} }
     .header-text { 
-      font-size: 1.1rem; 
+      font-size: 1rem; 
       font-weight: 900; 
-      letter-spacing: 2px; 
+      letter-spacing: 1px; 
       text-transform: uppercase; 
       line-height: 1.2; 
     }
     button {
       border: none; 
       margin: 3px 2px; 
-      font-size: 1.1rem; 
       font-weight: bold; 
       cursor: pointer; 
       transition: 0.15s; 
-      min-width: 40px;
       -webkit-tap-highlight-color: transparent;
     }
     button:active { transform: scale(0.95); }
     .score-btn {
-      font-size: 1rem; 
+      font-size: 1.15rem; 
       padding: 0; 
       border-radius: 50%; 
-      width: 56px; 
-      height: 56px;
+      width: 68px; 
+      height: 68px;
       display: flex; 
       align-items: center; 
       justify-content: center; 
@@ -93,43 +91,44 @@
       line-height: 1.1;
       text-shadow: 0 1px 2px rgba(0,0,0,0.4);
       touch-action: manipulation;
+      flex-shrink: 0;
     }
     .btn-or {
       background: radial-gradient(circle at 35% 30%, #ffe566 0%, #f9c74f 30%, #d4a017 70%, #b8860b 100%);
-      color: #3a2500; border: 2px solid #ffd700; 
+      color: #3a2500; border: 3px solid #ffd700; 
       box-shadow: 0 4px 0 #8b6914, 0 6px 12px rgba(218,165,32,0.5);
     }
     .btn-argent {
       background: radial-gradient(circle at 35% 30%, #f8f8f8 0%, #d8d8d8 30%, #a8a8a8 70%, #787878 100%);
-      color: #1b1b1b; border: 2px solid #c0c0c0; 
+      color: #1b1b1b; border: 3px solid #c0c0c0; 
       box-shadow: 0 4px 0 #5a5a5a, 0 6px 10px rgba(192,192,192,0.5);
     }
     .btn-bronze {
       background: radial-gradient(circle at 35% 30%, #f0d0a8 0%, #cd7f32 40%, #a0522d 80%, #6b3a1f 100%);
-      color: #fff; border: 2px solid #daa06d; 
+      color: #fff; border: 3px solid #daa06d; 
       box-shadow: 0 4px 0 #5c3317, 0 6px 10px rgba(205,127,50,0.5);
     }
     .btn-zero {
       background: radial-gradient(circle at 35% 30%, #666 0%, #444 40%, #222 80%, #111 100%);
-      color: #fff; border: 2px solid #555; 
+      color: #fff; border: 3px solid #555; 
       box-shadow: 0 4px 0 #1a1a1a, 0 6px 10px rgba(0,0,0,0.5);
     }
     .action-btn, .reset-btn, .rules-btn {
       background: #f9c74f; color: #1b4a2e; border: 2px solid #ffe5a3;
-      font-size: 1rem; border-radius: 20px; 
-      padding: 10px 14px;
+      font-size: 0.95rem; border-radius: 18px; 
+      padding: 8px 12px;
       box-shadow: 0 4px 0 #b07d2b, 0 5px 8px rgba(0,0,0,0.3);
       touch-action: manipulation;
     }
     .rules-btn { background: #e9c46a; }
     .confirm-btn {
       background: #2a9d8f; color: white; border: 2px solid #48cae4;
-      font-size: 1rem; border-radius: 20px; 
-      padding: 10px 14px; 
+      font-size: 0.95rem; border-radius: 18px; 
+      padding: 8px 12px; 
       box-shadow: 0 4px 0 #1a5c50;
     }
     input, select {
-      padding: 9px 10px; 
+      padding: 8px 10px; 
       border-radius: 10px; 
       border: none; 
       font-size: 1rem;
@@ -147,24 +146,24 @@
     }
     .row { 
       display: flex; 
-      flex-wrap: wrap; 
+      flex-wrap: nowrap; 
       justify-content: center; 
       align-items: center; 
-      gap: 5px; 
-      margin: 6px 0; 
+      gap: 6px; 
+      margin: 5px 0; 
     }
-    .scoreboard { margin: 8px 0; flex-shrink: 1; overflow-y: auto; min-height: 0; }
+    .scoreboard { margin: 6px 0; flex-shrink: 1; overflow-y: auto; min-height: 0; }
     .player-score {
       display: flex; 
       justify-content: space-between; 
       font-size: 1rem; 
-      padding: 5px 10px; 
+      padding: 4px 10px; 
       margin: 2px 0;
     }
     .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 8px; }
     .current-player-info {
-      font-size: 1.15rem; 
-      margin: 6px 0; 
+      font-size: 1.1rem; 
+      margin: 5px 0; 
       color: #f9c74f;
       display: flex; 
       align-items: center; 
@@ -173,9 +172,9 @@
       flex-wrap: wrap;
     }
     .round-points-box { 
-      font-size: 1.4rem; 
+      font-size: 1.3rem; 
       font-weight: bold; 
-      margin: 3px 0 6px; 
+      margin: 3px 0 5px; 
       color: #f9c74f; 
     }
     .palets-remaining { 
@@ -186,8 +185,8 @@
       justify-content: center; 
     }
     .palet-dot-small {
-      width: 13px; 
-      height: 13px; 
+      width: 14px; 
+      height: 14px; 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
       border: 1.5px solid #4a4a4a; 
@@ -382,12 +381,12 @@
     label { 
       font-weight: bold; 
       color: #f9c74f; 
-      font-size: 1rem; 
+      font-size: 0.95rem; 
       display: block; 
       margin-top: 4px; 
     }
     .setup-title { 
-      font-size: 1.15rem; 
+      font-size: 1.1rem; 
       font-weight: bold; 
       color: #f9c74f; 
       margin-bottom: 8px; 
@@ -590,7 +589,7 @@
 </div>
 
 <script>
-  // Le script JavaScript reste identique à la version précédente
+  // Script identique à la version précédente
   let players = [];
   let teams = [];
   let mode = 'points';
