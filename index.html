@@ -21,72 +21,71 @@
     }
     .container {
       width: 100%;
-      max-width: 700px;
+      max-width: 500px;
       height: 100vh;
       height: 100dvh;
       background: linear-gradient(180deg, #2d6a3f 0%, #1a4a24 100%);
-      border-radius: 0;
-      padding: 8px 8px;
       text-align: center;
       position: relative;
-      border: none;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      padding: 12px 12px 20px;
     }
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
       .container {
-        border-radius: 20px;
-        border: 4px solid #f9c74f;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        margin: 10px;
-        height: calc(100vh - 20px);
-        height: calc(100dvh - 20px);
-        max-height: 800px;
+        border-radius: 25px;
+        border: 5px solid #f9c74f;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        margin: 15px;
+        height: calc(100vh - 30px);
+        height: calc(100dvh - 30px);
+        max-height: 900px;
+        max-width: 550px;
       }
     }
     .app-header {
       background: #f9c74f;
       color: #1b4a2e;
-      padding: 6px 8px;
-      border-radius: 12px;
-      margin-bottom: 6px;
+      padding: 10px 12px;
+      border-radius: 15px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 10px;
       flex-shrink: 0;
     }
     .header-frog { 
-      font-size: clamp(1.5rem, 5vw, 2.8rem); 
+      font-size: 2.8rem; 
       filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.5)); 
       animation: frogWiggle 3s ease-in-out infinite; 
     }
     @keyframes frogWiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-5deg)} 75%{transform:rotate(5deg)} }
     .header-text { 
-      font-size: clamp(0.8rem, 2vw, 1.3rem); 
+      font-size: 1.1rem; 
       font-weight: 900; 
-      letter-spacing: clamp(1px, 0.3vw, 2px); 
+      letter-spacing: 2px; 
       text-transform: uppercase; 
-      line-height: 1.15; 
+      line-height: 1.2; 
     }
     button {
       border: none; 
-      margin: 1px; 
-      font-size: clamp(0.8rem, 1.7vw, 1.1rem); 
+      margin: 3px 2px; 
+      font-size: 1.1rem; 
       font-weight: bold; 
       cursor: pointer; 
       transition: 0.15s; 
-      min-width: 30px;
+      min-width: 40px;
       -webkit-tap-highlight-color: transparent;
     }
     button:active { transform: scale(0.95); }
     .score-btn {
-      font-size: clamp(0.75rem, 1.5vw, 1rem); 
+      font-size: 1rem; 
       padding: 0; 
       border-radius: 50%; 
-      width: clamp(38px, 9vw, 56px); 
-      height: clamp(38px, 9vw, 56px);
+      width: 56px; 
+      height: 56px;
       display: flex; 
       align-items: center; 
       justify-content: center; 
@@ -98,100 +97,100 @@
     .btn-or {
       background: radial-gradient(circle at 35% 30%, #ffe566 0%, #f9c74f 30%, #d4a017 70%, #b8860b 100%);
       color: #3a2500; border: 2px solid #ffd700; 
-      box-shadow: 0 3px 0 #8b6914, 0 5px 10px rgba(218,165,32,0.5);
+      box-shadow: 0 4px 0 #8b6914, 0 6px 12px rgba(218,165,32,0.5);
     }
     .btn-argent {
       background: radial-gradient(circle at 35% 30%, #f8f8f8 0%, #d8d8d8 30%, #a8a8a8 70%, #787878 100%);
       color: #1b1b1b; border: 2px solid #c0c0c0; 
-      box-shadow: 0 3px 0 #5a5a5a, 0 5px 8px rgba(192,192,192,0.5);
+      box-shadow: 0 4px 0 #5a5a5a, 0 6px 10px rgba(192,192,192,0.5);
     }
     .btn-bronze {
       background: radial-gradient(circle at 35% 30%, #f0d0a8 0%, #cd7f32 40%, #a0522d 80%, #6b3a1f 100%);
       color: #fff; border: 2px solid #daa06d; 
-      box-shadow: 0 3px 0 #5c3317, 0 5px 8px rgba(205,127,50,0.5);
+      box-shadow: 0 4px 0 #5c3317, 0 6px 10px rgba(205,127,50,0.5);
     }
     .btn-zero {
       background: radial-gradient(circle at 35% 30%, #666 0%, #444 40%, #222 80%, #111 100%);
       color: #fff; border: 2px solid #555; 
-      box-shadow: 0 3px 0 #1a1a1a, 0 5px 8px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 0 #1a1a1a, 0 6px 10px rgba(0,0,0,0.5);
     }
     .action-btn, .reset-btn, .rules-btn {
       background: #f9c74f; color: #1b4a2e; border: 2px solid #ffe5a3;
-      font-size: clamp(0.7rem, 1.4vw, 0.9rem); border-radius: 12px; 
-      padding: 5px 8px;
-      box-shadow: 0 2px 0 #b07d2b, 0 3px 5px rgba(0,0,0,0.3);
+      font-size: 1rem; border-radius: 20px; 
+      padding: 10px 14px;
+      box-shadow: 0 4px 0 #b07d2b, 0 5px 8px rgba(0,0,0,0.3);
       touch-action: manipulation;
     }
     .rules-btn { background: #e9c46a; }
     .confirm-btn {
       background: #2a9d8f; color: white; border: 2px solid #48cae4;
-      font-size: clamp(0.7rem, 1.4vw, 0.9rem); border-radius: 12px; 
-      padding: 5px 8px; 
-      box-shadow: 0 2px 0 #1a5c50;
+      font-size: 1rem; border-radius: 20px; 
+      padding: 10px 14px; 
+      box-shadow: 0 4px 0 #1a5c50;
     }
     input, select {
-      padding: 5px 6px; 
-      border-radius: 6px; 
+      padding: 9px 10px; 
+      border-radius: 10px; 
       border: none; 
-      font-size: clamp(0.75rem, 1.4vw, 0.9rem);
-      margin: 2px 1px; 
-      width: min(65%, 280px); 
+      font-size: 1rem;
+      margin: 4px 2px; 
+      width: min(75%, 300px); 
       background: white;
       -webkit-appearance: none;
       appearance: none;
     }
     .players-setup input, .team-members input, .random-players input { 
-      width: min(50%, 180px); 
-      margin: 1px; 
-      padding: 4px 6px;
-      font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+      width: min(60%, 220px); 
+      margin: 3px; 
+      padding: 8px 10px;
+      font-size: 1rem;
     }
     .row { 
       display: flex; 
       flex-wrap: wrap; 
       justify-content: center; 
       align-items: center; 
-      gap: 3px; 
-      margin: 3px 0; 
+      gap: 5px; 
+      margin: 6px 0; 
     }
-    .scoreboard { margin: 3px 0; flex-shrink: 1; overflow-y: auto; min-height: 0; }
+    .scoreboard { margin: 8px 0; flex-shrink: 1; overflow-y: auto; min-height: 0; }
     .player-score {
       display: flex; 
       justify-content: space-between; 
-      font-size: clamp(0.7rem, 1.4vw, 0.9rem); 
-      padding: 2px 6px; 
-      margin: 1px 0;
+      font-size: 1rem; 
+      padding: 5px 10px; 
+      margin: 2px 0;
     }
-    .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 5px; }
+    .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 8px; }
     .current-player-info {
-      font-size: clamp(0.8rem, 1.6vw, 1rem); 
-      margin: 3px 0; 
+      font-size: 1.15rem; 
+      margin: 6px 0; 
       color: #f9c74f;
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      gap: 5px; 
+      gap: 8px; 
       flex-wrap: wrap;
     }
     .round-points-box { 
-      font-size: clamp(1rem, 2vw, 1.3rem); 
+      font-size: 1.4rem; 
       font-weight: bold; 
-      margin: 1px 0 3px; 
+      margin: 3px 0 6px; 
       color: #f9c74f; 
     }
     .palets-remaining { 
       display: flex; 
       align-items: center; 
-      gap: 2px; 
+      gap: 4px; 
       flex-wrap: wrap; 
       justify-content: center; 
     }
     .palet-dot-small {
-      width: clamp(8px, 1.6vw, 11px); 
-      height: clamp(8px, 1.6vw, 11px); 
+      width: 13px; 
+      height: 13px; 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
-      border: 1px solid #4a4a4a; 
+      border: 1.5px solid #4a4a4a; 
       box-shadow: 0 1px 2px rgba(0,0,0,0.5);
       transition: all 0.3s ease;
     }
@@ -199,14 +198,14 @@
       background: radial-gradient(circle at 35% 30%, #3a3a3a 0%, #1a1a1a 80%);
       opacity: 0.3; border-color: #2a2a2a; box-shadow: none;
     }
-    .palet-pyramid { display: flex; flex-direction: column; align-items: center; gap: 1px; }
-    .palet-pyramid .row-two { display: flex; gap: 2px; }
+    .palet-pyramid { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .palet-pyramid .row-two { display: flex; gap: 3px; }
     .palet-dot {
-      width: clamp(10px, 2vw, 14px); 
-      height: clamp(10px, 2vw, 14px); 
+      width: 15px; 
+      height: 15px; 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
-      border: 1px solid #4a4a4a; 
+      border: 1.5px solid #4a4a4a; 
       box-shadow: 0 1px 2px rgba(0,0,0,0.6);
     }
     .confirm-popup, .rules-popup, .teams-popup {
@@ -224,86 +223,86 @@
     .confirm-box, .rules-box, .teams-box {
       background: #2d6a3f; 
       border: 3px solid #f9c74f; 
-      border-radius: 12px;
-      padding: 12px; 
+      border-radius: 15px;
+      padding: 20px; 
       text-align: center; 
-      max-width: min(92%, 420px); 
-      width: 92%;
-      max-height: 70vh; 
+      max-width: min(90%, 450px); 
+      width: 90%;
+      max-height: 75vh; 
       overflow-y: auto; 
       color: #fff;
     }
-    .rules-box { text-align: left; font-size: clamp(0.7rem, 1.3vw, 0.85rem); line-height: 1.35; }
-    .rules-box h2 { text-align: center; margin-bottom: 6px; }
-    .teams-box { font-size: clamp(0.7rem, 1.3vw, 0.85rem); }
-    .teams-box h2 { text-align: center; margin-bottom: 6px; }
+    .rules-box { text-align: left; font-size: 1rem; line-height: 1.4; }
+    .rules-box h2 { text-align: center; margin-bottom: 10px; }
+    .teams-box { font-size: 1rem; }
+    .teams-box h2 { text-align: center; margin-bottom: 10px; }
     .team-display {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      gap: 6px;
-      margin: 6px 0;
+      gap: 10px;
+      margin: 10px 0;
     }
     .team-card {
       background: rgba(255,255,255,0.1);
-      padding: 6px;
-      border-radius: 8px;
-      width: min(45%, 160px);
-      min-width: 90px;
+      padding: 10px;
+      border-radius: 12px;
+      width: min(45%, 180px);
+      min-width: 120px;
     }
     .team-card h3 {
       color: #f9c74f;
-      margin-bottom: 3px;
-      font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+      margin-bottom: 5px;
+      font-size: 1rem;
     }
     .team-card ul { list-style: none; padding: 0; text-align: left; }
-    .team-card li { padding: 1px 0; font-size: clamp(0.65rem, 1.2vw, 0.8rem); }
+    .team-card li { padding: 2px 0; font-size: 0.95rem; }
     .confirm-box p { 
-      font-size: clamp(0.85rem, 1.5vw, 1rem); 
+      font-size: 1.2rem; 
       font-weight: bold; 
-      margin-bottom: 8px; 
+      margin-bottom: 15px; 
     }
-    .confirm-box .row, .rules-box .row, .teams-box .row { gap: 8px; }
+    .confirm-box .row, .rules-box .row, .teams-box .row { gap: 15px; }
     .animation-area { 
       position: relative; 
-      height: clamp(25px, 6vw, 45px); 
+      height: 50px; 
       overflow: hidden; 
-      margin-top: 2px; 
+      margin-top: 4px; 
       flex-shrink: 0;
     }
     .frog-anim { 
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem); 
+      font-size: 3rem; 
       position: absolute; 
       left: 50%; 
       transform: translateX(-50%); 
       animation: bounce 0.6s ease; 
     }
     @keyframes bounce { 
-      0%{top:18px} 
-      30%{top:-7px} 
-      50%{top:7px} 
-      70%{top:-3px} 
-      100%{top:18px} 
+      0%{top:25px} 
+      30%{top:-10px} 
+      50%{top:10px} 
+      70%{top:-4px} 
+      100%{top:25px} 
     }
     .moulin { 
-      width: clamp(25px, 5vw, 40px); 
-      height: clamp(25px, 5vw, 40px); 
+      width: 40px; 
+      height: 40px; 
       position: absolute; 
       left: 50%; 
-      top: 2px; 
+      top: 4px; 
       transform: translateX(-50%); 
       animation: spin 1.5s linear infinite; 
     }
     .blade {
       position: absolute; 
-      width: clamp(5px, 1.2vw, 9px); 
-      height: clamp(15px, 3.5vw, 25px); 
+      width: 8px; 
+      height: 24px; 
       background: #c2a26b; 
       left: 50%; 
-      top: 15%; 
-      margin-left: clamp(-4px, -0.8vw, -4px);
+      top: 20%; 
+      margin-left: -4px;
       border-radius: 4px; 
-      transform-origin: 50% 85%;
+      transform-origin: 50% 80%;
     }
     .blade:nth-child(1){transform:rotate(0)} 
     .blade:nth-child(2){transform:rotate(90deg)} 
@@ -316,108 +315,108 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 6px;
-      margin: 6px 0 3px;
-      padding: 3px;
+      gap: 10px;
+      margin: 10px 0 5px;
+      padding: 5px;
     }
     .podium-step {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      border-radius: 6px 6px 0 0;
-      padding: 6px 4px;
-      width: clamp(55px, 14vw, 90px);
+      border-radius: 8px 8px 0 0;
+      padding: 10px 8px;
+      width: 100px;
       color: #000;
       font-weight: bold;
       transition: all 0.5s ease;
     }
     .podium-step-1 { 
       background: #ffd700; 
-      height: clamp(55px, 16vw, 100px); 
-      border: 2px solid #b8860b; 
+      height: 130px; 
+      border: 3px solid #b8860b; 
     }
     .podium-step-2 { 
       background: #c0c0c0; 
-      height: clamp(45px, 13vw, 80px); 
-      border: 2px solid #808080; 
+      height: 105px; 
+      border: 3px solid #808080; 
     }
     .podium-step-3 { 
       background: #cd7f32; 
-      height: clamp(35px, 10vw, 60px); 
-      border: 2px solid #8b4513; 
+      height: 80px; 
+      border: 3px solid #8b4513; 
       color: #fff; 
     }
-    .podium-step .medal { font-size: clamp(1rem, 2.5vw, 1.5rem); margin-bottom: 1px; }
-    .podium-step .name { font-size: clamp(0.5rem, 1.1vw, 0.7rem); text-transform: uppercase; }
-    .podium-step .score { font-size: clamp(0.45rem, 0.9vw, 0.6rem); margin-top: 1px; }
+    .podium-step .medal { font-size: 2rem; margin-bottom: 3px; }
+    .podium-step .name { font-size: 0.85rem; text-transform: uppercase; }
+    .podium-step .score { font-size: 0.75rem; margin-top: 3px; }
     .other-results {
-      margin-top: 4px;
+      margin-top: 8px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      padding: 0 3px;
+      gap: 4px;
+      padding: 0 8px;
     }
     .other-result-item {
       background: rgba(255,255,255,0.15);
-      padding: 3px 6px;
-      border-radius: 5px;
+      padding: 6px 10px;
+      border-radius: 8px;
       display: flex;
       justify-content: space-between;
-      font-size: clamp(0.55rem, 1.1vw, 0.75rem);
+      font-size: 0.9rem;
     }
 
     .hidden { display: none !important; }
     .btn-start {
-      font-size: clamp(0.9rem, 1.8vw, 1.2rem); 
-      padding: 6px 16px; 
+      font-size: 1.3rem; 
+      padding: 12px 30px; 
       background: #f9c74f; 
       color: #1b4a2e;
       border: 2px solid #ffe5a3; 
-      margin-top: 5px; 
-      border-radius: 15px; 
+      margin-top: 8px; 
+      border-radius: 25px; 
       letter-spacing: 1px; 
-      box-shadow: 0 2px 0 #b07d2b;
+      box-shadow: 0 4px 0 #b07d2b;
       touch-action: manipulation;
     }
     label { 
       font-weight: bold; 
       color: #f9c74f; 
-      font-size: clamp(0.65rem, 1.2vw, 0.8rem); 
+      font-size: 1rem; 
       display: block; 
-      margin-top: 2px; 
+      margin-top: 4px; 
     }
     .setup-title { 
-      font-size: clamp(0.8rem, 1.5vw, 1rem); 
+      font-size: 1.15rem; 
       font-weight: bold; 
       color: #f9c74f; 
-      margin-bottom: 4px; 
+      margin-bottom: 8px; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      gap: 6px; 
+      gap: 10px; 
     }
     .team-section { 
-      margin: 3px 0; 
-      padding: 4px; 
+      margin: 6px 0; 
+      padding: 8px; 
       background: rgba(255,255,255,0.1); 
-      border-radius: 8px; 
+      border-radius: 10px; 
     }
     .team-section h3 { 
       color: #f9c74f; 
-      margin-bottom: 1px; 
-      font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+      margin-bottom: 4px; 
+      font-size: 1rem;
     }
     .confetti {
       position: absolute; 
-      width: clamp(5px, 1vw, 8px); 
-      height: clamp(5px, 1vw, 8px); 
+      width: 9px; 
+      height: 9px; 
       border-radius: 50%;
       animation: fall linear forwards;
     }
     @keyframes fall {
       0% { transform: translateY(0) rotate(0); opacity: 1; }
-      100% { transform: translateY(clamp(80px, 25vw, 150px)) rotate(720deg); opacity: 0; }
+      100% { transform: translateY(160px) rotate(720deg); opacity: 0; }
     }
     #game, #resultsScreen {
       flex: 1;
@@ -438,7 +437,7 @@
   <div id="setup">
     <div class="app-header">
       <span class="header-frog">🐸</span>
-      <div class="header-text">JEU DE LA<br>GRENOUILLE<br>DE LA FAMILLE<br>DELORME</div>
+      <div class="header-text">JEU DE LA<br>GRENOUILLE<br>DELORME</div>
       <span class="header-frog">🐸</span>
     </div>
     <div class="setup-title">
@@ -483,17 +482,17 @@
     <div id="roundsDiv" class="hidden"><label>Manches :</label><input type="number" id="numRounds" min="1" value="3"></div>
     <div><label>Palets/joueur :</label><input type="number" id="paletsPerRound" min="1" value="8"></div>
     <button class="btn-start" onclick="startGame()">LANCER</button>
-    <div style="margin-top:3px;">
+    <div style="margin-top:5px;">
       <button class="rules-btn" onclick="showRules()">📖 Règles</button>
     </div>
   </div>
 
   <!-- Page jeu -->
   <div id="game" class="hidden">
-    <div class="app-header" style="margin-bottom:4px; padding:4px;">
-      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
-      <div class="header-text" style="font-size:clamp(0.7rem,1.4vw,1rem);">GRENOUILLE<br>DELORME</div>
-      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
+    <div class="app-header" style="margin-bottom:6px; padding:6px;">
+      <span class="header-frog" style="font-size:2rem;">🐸</span>
+      <div class="header-text" style="font-size:0.95rem;">GRENOUILLE<br>DELORME</div>
+      <span class="header-frog" style="font-size:2rem;">🐸</span>
     </div>
     <div class="scoreboard" id="scoreboard"></div>
     <div class="current-player-info">
@@ -524,9 +523,9 @@
       <button class="score-btn btn-bronze" onclick="addScore(90)">90</button>
     </div>
     <div class="row"><button class="score-btn btn-zero" onclick="addScore(0)">0</button></div>
-    <div class="row" style="margin-top:3px;">
+    <div class="row" style="margin-top:5px;">
       <button class="action-btn" onclick="undoLastScore()">Annuler</button>
-      <button class="action-btn" onclick="endRoundEarly()">Finir manche</button>
+      <button class="action-btn" onclick="endRoundEarly()">Finir</button>
       <button class="reset-btn" onclick="showResetConfirm()">Nouveau</button>
       <button class="rules-btn" onclick="showRules()">📖</button>
     </div>
@@ -535,14 +534,14 @@
 
   <!-- Page résultats -->
   <div id="resultsScreen" class="hidden">
-    <div class="app-header" style="margin-bottom:6px;">
-      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
+    <div class="app-header" style="margin-bottom:10px;">
+      <span class="header-frog" style="font-size:2rem;">🐸</span>
       <div class="header-text">CLASSEMENT</div>
-      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
+      <span class="header-frog" style="font-size:2rem;">🐸</span>
     </div>
     <div id="podiumArea"></div>
-    <div class="animation-area" id="resultsConfetti" style="height:clamp(40px,10vw,80px); position:relative;"></div>
-    <button class="btn-start" onclick="resetGame()" style="margin-top:6px;">Nouvelle partie</button>
+    <div class="animation-area" id="resultsConfetti" style="height:80px; position:relative;"></div>
+    <button class="btn-start" onclick="resetGame()" style="margin-top:10px;">Nouvelle partie</button>
   </div>
 
   <!-- Popup règles -->
@@ -551,7 +550,7 @@
       <h2>📖 Règles du jeu</h2>
       <p>Le jeu de la Grenouille se pratique en plein air ou à l'intérieur.</p>
       <p>La PARTIE peut se jouer :</p>
-      <ul style="margin-left:15px;">
+      <ul style="margin-left:20px;">
         <li>Individuellement, dans ce cas, chaque joueur peut utiliser ses 8 palets.</li>
         <li>Par équipe, les palets étant alors partagés entre les joueurs, en une ou plusieurs manches dont le nombre est décidé à l'avance.</li>
       </ul>
@@ -560,7 +559,7 @@
       <p>On tire au sort le joueur ou l'équipe qui jouera en premier.</p>
       <p>Chaque joueur se place à environ 3 mètres du jeu.</p>
       <p><strong>Bonus :</strong> L'équipe ou le joueur qui réussit la "Grenouille" 4 fois sur 8 palets dans une même partie marque 1000 points supplémentaires.</p>
-      <div class="row" style="justify-content:center; margin-top:10px;">
+      <div class="row" style="justify-content:center; margin-top:15px;">
         <button class="action-btn" onclick="hideRules()">Fermer</button>
       </div>
     </div>
@@ -571,7 +570,7 @@
     <div class="teams-box">
       <h2>👥 Composition des équipes</h2>
       <div class="team-display" id="teamsPopupContent"></div>
-      <div class="row" style="justify-content:center; margin-top:10px;">
+      <div class="row" style="justify-content:center; margin-top:15px;">
         <button class="action-btn" onclick="hideTeamsPopup()">Commencer</button>
       </div>
     </div>
@@ -581,7 +580,7 @@
   <div id="resetPopup" class="confirm-popup hidden">
     <div class="confirm-box">
       <p>⚠️ Réinitialiser la partie ?</p>
-      <p style="font-size:0.8rem; font-weight:normal;">Tous les scores seront effacés.</p>
+      <p style="font-size:1rem; font-weight:normal;">Tous les scores seront effacés.</p>
       <div class="row">
         <button class="confirm-btn" onclick="resetGame()">✅ Oui</button>
         <button class="reset-btn" onclick="hideResetConfirm()">❌ Non</button>
@@ -591,6 +590,7 @@
 </div>
 
 <script>
+  // Le script JavaScript reste identique à la version précédente
   let players = [];
   let teams = [];
   let mode = 'points';
@@ -618,7 +618,7 @@
       const input = document.createElement('input');
       input.type = 'text'; input.id = `playerName${i}`;
       input.placeholder = `Joueur ${i+1}`; input.value = '';
-      input.style.fontSize = '16px'; // Éviter le zoom automatique iOS
+      input.style.fontSize = '16px';
       container.appendChild(input);
     }
   }
