@@ -242,6 +242,7 @@
     .player-score {
       display: flex; 
       justify-content: space-between; 
+      align-items: center;
       font-size: var(--scoreboard-font); 
       padding: 4px 10px; 
       margin: 2px 0;
@@ -394,7 +395,6 @@
     .blade:nth-child(4){transform:rotate(270deg)}
     @keyframes spin { 100%{transform:translateX(-50%) rotate(360deg)} }
     
-    /* Podium */
     .podium-container {
       display: flex;
       justify-content: center;
@@ -488,6 +488,11 @@
     @keyframes fall {
       0% { transform: translateY(0) rotate(0); opacity: 1; }
       100% { transform: translateY(160px) rotate(720deg); opacity: 0; }
+    }
+    .members-list {
+      font-size: 0.75em;
+      opacity: 0.8;
+      display: block;
     }
   </style>
 </head>
@@ -644,7 +649,6 @@
 </div>
 
 <script>
-  // Script identique
   let players = [];
   let teams = [];
   let mode = 'points';
@@ -1010,7 +1014,11 @@
     sb.innerHTML = teams.map(t => {
       let cls = (t === currentTeam) ? 'player-score current-player' : 'player-score';
       let mark = t.finished ? ` (${t.finishRank}er)` : '';
-      return `<div class="${cls}"><span>${t.name}${mark}</span><span>${t.totalScore} pts</span></div>`;
+      let membersList = '';
+      if (t.members && t.members.length > 0) {
+        membersList = '<span class="members-list">' + t.members.map(m => m.name).join(', ') + '</span>';
+      }
+      return `<div class="${cls}"><span>${t.name}${mark}${membersList}</span><span>${t.totalScore} pts</span></div>`;
     }).join('');
   }
 
