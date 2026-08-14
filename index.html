@@ -9,18 +9,18 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
       font-family: 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif;
       background: #d9c8a8;
       color: #fff;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 0;
     }
     
-    /* Taille des boutons de score selon l'écran */
     :root {
       --score-btn-size: 68px;
       --score-btn-font: 1.15rem;
@@ -41,7 +41,6 @@
       --podium-width: 100px;
     }
     
-    /* Petits téléphones (iPhone SE, etc.) */
     @media (max-width: 375px) {
       :root {
         --score-btn-size: 56px;
@@ -64,15 +63,6 @@
       }
     }
     
-    /* iPhone 15 et téléphones moyens (375-430px) */
-    @media (min-width: 376px) and (max-width: 430px) {
-      :root {
-        --score-btn-size: 68px;
-        --score-btn-font: 1.15rem;
-      }
-    }
-    
-    /* Tablettes */
     @media (min-width: 500px) and (max-width: 900px) {
       :root {
         --score-btn-size: 75px;
@@ -95,7 +85,6 @@
       }
     }
     
-    /* Grands écrans (PC, TV) */
     @media (min-width: 901px) {
       :root {
         --score-btn-size: 85px;
@@ -121,26 +110,25 @@
     .container {
       width: 100%;
       max-width: 600px;
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
       background: linear-gradient(180deg, #2d6a3f 0%, #1a4a24 100%);
       text-align: center;
       position: relative;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      padding: 10px 10px 15px;
+      padding: 15px 10px 25px;
     }
     @media (min-width: 600px) {
       .container {
         border-radius: 25px;
         border: 5px solid #f9c74f;
         box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-        margin: 15px;
-        height: calc(100vh - 30px);
-        height: calc(100dvh - 30px);
-        max-height: 950px;
+        margin: 15px auto;
+        min-height: calc(100vh - 30px);
+        min-height: calc(100dvh - 30px);
         max-width: 650px;
+        padding-bottom: 40px;
       }
     }
     .app-header {
@@ -250,7 +238,7 @@
       gap: 6px; 
       margin: 5px 0; 
     }
-    .scoreboard { margin: 6px 0; flex-shrink: 1; overflow-y: auto; min-height: 0; }
+    .scoreboard { margin: 6px 0; }
     .player-score {
       display: flex; 
       justify-content: space-between; 
@@ -365,7 +353,6 @@
       height: 50px; 
       overflow: hidden; 
       margin-top: 4px; 
-      flex-shrink: 0;
     }
     .frog-anim { 
       font-size: calc(var(--header-frog-size) * 1.2); 
@@ -502,22 +489,10 @@
       0% { transform: translateY(0) rotate(0); opacity: 1; }
       100% { transform: translateY(160px) rotate(720deg); opacity: 0; }
     }
-    #game, #resultsScreen {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    #setup {
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
   </style>
 </head>
 <body>
 <div class="container" id="app">
-  <!-- Le HTML est identique, seules les classes CSS changent -->
   <div id="setup">
     <div class="app-header">
       <span class="header-frog">🐸</span>
@@ -626,7 +601,6 @@
     <button class="btn-start" onclick="resetGame()" style="margin-top:10px;">Nouvelle partie</button>
   </div>
 
-  <!-- Popups identiques à la version précédente -->
   <div id="rulesPopup" class="rules-popup hidden">
     <div class="rules-box">
       <h2>📖 Règles du jeu</h2>
@@ -670,8 +644,7 @@
 </div>
 
 <script>
-  // Le script JavaScript est identique à la version précédente
-  // (mêmes fonctions, mêmes variables)
+  // Script identique
   let players = [];
   let teams = [];
   let mode = 'points';
