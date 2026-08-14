@@ -19,9 +19,108 @@
       align-items: center;
       padding: 0;
     }
+    
+    /* Taille des boutons de score selon l'écran */
+    :root {
+      --score-btn-size: 68px;
+      --score-btn-font: 1.15rem;
+      --action-btn-font: 0.95rem;
+      --action-btn-padding: 8px 12px;
+      --header-frog-size: 2.5rem;
+      --header-text-size: 1rem;
+      --label-font: 0.95rem;
+      --input-font: 1rem;
+      --input-padding: 8px 10px;
+      --scoreboard-font: 1rem;
+      --current-player-font: 1.1rem;
+      --points-font: 1.3rem;
+      --palet-dot-size: 14px;
+      --podium-1-height: 130px;
+      --podium-2-height: 105px;
+      --podium-3-height: 80px;
+      --podium-width: 100px;
+    }
+    
+    /* Petits téléphones (iPhone SE, etc.) */
+    @media (max-width: 375px) {
+      :root {
+        --score-btn-size: 56px;
+        --score-btn-font: 1rem;
+        --action-btn-font: 0.85rem;
+        --action-btn-padding: 6px 10px;
+        --header-frog-size: 2rem;
+        --header-text-size: 0.9rem;
+        --label-font: 0.85rem;
+        --input-font: 0.9rem;
+        --input-padding: 6px 8px;
+        --scoreboard-font: 0.9rem;
+        --current-player-font: 1rem;
+        --points-font: 1.15rem;
+        --palet-dot-size: 12px;
+        --podium-1-height: 110px;
+        --podium-2-height: 90px;
+        --podium-3-height: 70px;
+        --podium-width: 85px;
+      }
+    }
+    
+    /* iPhone 15 et téléphones moyens (375-430px) */
+    @media (min-width: 376px) and (max-width: 430px) {
+      :root {
+        --score-btn-size: 68px;
+        --score-btn-font: 1.15rem;
+      }
+    }
+    
+    /* Tablettes */
+    @media (min-width: 500px) and (max-width: 900px) {
+      :root {
+        --score-btn-size: 75px;
+        --score-btn-font: 1.3rem;
+        --action-btn-font: 1.05rem;
+        --action-btn-padding: 10px 16px;
+        --header-frog-size: 3rem;
+        --header-text-size: 1.15rem;
+        --label-font: 1.05rem;
+        --input-font: 1.05rem;
+        --input-padding: 10px 12px;
+        --scoreboard-font: 1.1rem;
+        --current-player-font: 1.25rem;
+        --points-font: 1.5rem;
+        --palet-dot-size: 16px;
+        --podium-1-height: 150px;
+        --podium-2-height: 120px;
+        --podium-3-height: 95px;
+        --podium-width: 120px;
+      }
+    }
+    
+    /* Grands écrans (PC, TV) */
+    @media (min-width: 901px) {
+      :root {
+        --score-btn-size: 85px;
+        --score-btn-font: 1.5rem;
+        --action-btn-font: 1.15rem;
+        --action-btn-padding: 12px 20px;
+        --header-frog-size: 3.5rem;
+        --header-text-size: 1.3rem;
+        --label-font: 1.15rem;
+        --input-font: 1.1rem;
+        --input-padding: 12px 14px;
+        --scoreboard-font: 1.2rem;
+        --current-player-font: 1.4rem;
+        --points-font: 1.7rem;
+        --palet-dot-size: 18px;
+        --podium-1-height: 180px;
+        --podium-2-height: 145px;
+        --podium-3-height: 110px;
+        --podium-width: 140px;
+      }
+    }
+    
     .container {
       width: 100%;
-      max-width: 500px;
+      max-width: 600px;
       height: 100vh;
       height: 100dvh;
       background: linear-gradient(180deg, #2d6a3f 0%, #1a4a24 100%);
@@ -40,8 +139,8 @@
         margin: 15px;
         height: calc(100vh - 30px);
         height: calc(100dvh - 30px);
-        max-height: 900px;
-        max-width: 600px;
+        max-height: 950px;
+        max-width: 650px;
       }
     }
     .app-header {
@@ -57,13 +156,13 @@
       flex-shrink: 0;
     }
     .header-frog { 
-      font-size: 2.5rem; 
+      font-size: var(--header-frog-size); 
       filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.5)); 
       animation: frogWiggle 3s ease-in-out infinite; 
     }
     @keyframes frogWiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-5deg)} 75%{transform:rotate(5deg)} }
     .header-text { 
-      font-size: 1rem; 
+      font-size: var(--header-text-size); 
       font-weight: 900; 
       letter-spacing: 1px; 
       text-transform: uppercase; 
@@ -79,11 +178,11 @@
     }
     button:active { transform: scale(0.95); }
     .score-btn {
-      font-size: 1.15rem; 
+      font-size: var(--score-btn-font); 
       padding: 0; 
       border-radius: 50%; 
-      width: 68px; 
-      height: 68px;
+      width: var(--score-btn-size); 
+      height: var(--score-btn-size);
       display: flex; 
       align-items: center; 
       justify-content: center; 
@@ -115,23 +214,23 @@
     }
     .action-btn, .reset-btn, .rules-btn {
       background: #f9c74f; color: #1b4a2e; border: 2px solid #ffe5a3;
-      font-size: 0.95rem; border-radius: 18px; 
-      padding: 8px 12px;
+      font-size: var(--action-btn-font); border-radius: 18px; 
+      padding: var(--action-btn-padding);
       box-shadow: 0 4px 0 #b07d2b, 0 5px 8px rgba(0,0,0,0.3);
       touch-action: manipulation;
     }
     .rules-btn { background: #e9c46a; }
     .confirm-btn {
       background: #2a9d8f; color: white; border: 2px solid #48cae4;
-      font-size: 0.95rem; border-radius: 18px; 
-      padding: 8px 12px; 
+      font-size: var(--action-btn-font); border-radius: 18px; 
+      padding: var(--action-btn-padding); 
       box-shadow: 0 4px 0 #1a5c50;
     }
     input, select {
-      padding: 8px 10px; 
+      padding: var(--input-padding); 
       border-radius: 10px; 
       border: none; 
-      font-size: 1rem;
+      font-size: var(--input-font);
       margin: 4px 2px; 
       width: min(75%, 300px); 
       background: white;
@@ -141,8 +240,7 @@
     .players-setup input, .team-members input, .random-players input { 
       width: min(60%, 220px); 
       margin: 3px; 
-      padding: 8px 10px;
-      font-size: 1rem;
+      font-size: var(--input-font);
     }
     .row { 
       display: flex; 
@@ -156,13 +254,13 @@
     .player-score {
       display: flex; 
       justify-content: space-between; 
-      font-size: 1rem; 
+      font-size: var(--scoreboard-font); 
       padding: 4px 10px; 
       margin: 2px 0;
     }
     .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 8px; }
     .current-player-info {
-      font-size: 1.1rem; 
+      font-size: var(--current-player-font); 
       margin: 5px 0; 
       color: #f9c74f;
       display: flex; 
@@ -172,7 +270,7 @@
       flex-wrap: wrap;
     }
     .round-points-box { 
-      font-size: 1.3rem; 
+      font-size: var(--points-font); 
       font-weight: bold; 
       margin: 3px 0 5px; 
       color: #f9c74f; 
@@ -185,8 +283,8 @@
       justify-content: center; 
     }
     .palet-dot-small {
-      width: 14px; 
-      height: 14px; 
+      width: var(--palet-dot-size); 
+      height: var(--palet-dot-size); 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
       border: 1.5px solid #4a4a4a; 
@@ -200,8 +298,8 @@
     .palet-pyramid { display: flex; flex-direction: column; align-items: center; gap: 2px; }
     .palet-pyramid .row-two { display: flex; gap: 3px; }
     .palet-dot {
-      width: 15px; 
-      height: 15px; 
+      width: calc(var(--palet-dot-size) + 1px); 
+      height: calc(var(--palet-dot-size) + 1px); 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
       border: 1.5px solid #4a4a4a; 
@@ -231,9 +329,9 @@
       overflow-y: auto; 
       color: #fff;
     }
-    .rules-box { text-align: left; font-size: 1rem; line-height: 1.4; }
+    .rules-box { text-align: left; font-size: var(--scoreboard-font); line-height: 1.4; }
     .rules-box h2 { text-align: center; margin-bottom: 10px; }
-    .teams-box { font-size: 1rem; }
+    .teams-box { font-size: var(--scoreboard-font); }
     .teams-box h2 { text-align: center; margin-bottom: 10px; }
     .team-display {
       display: flex;
@@ -252,12 +350,12 @@
     .team-card h3 {
       color: #f9c74f;
       margin-bottom: 5px;
-      font-size: 1rem;
+      font-size: var(--scoreboard-font);
     }
     .team-card ul { list-style: none; padding: 0; text-align: left; }
-    .team-card li { padding: 2px 0; font-size: 0.95rem; }
+    .team-card li { padding: 2px 0; font-size: calc(var(--scoreboard-font) - 0.05rem); }
     .confirm-box p { 
-      font-size: 1.2rem; 
+      font-size: calc(var(--current-player-font) + 0.1rem); 
       font-weight: bold; 
       margin-bottom: 15px; 
     }
@@ -270,7 +368,7 @@
       flex-shrink: 0;
     }
     .frog-anim { 
-      font-size: 3rem; 
+      font-size: calc(var(--header-frog-size) * 1.2); 
       position: absolute; 
       left: 50%; 
       transform: translateX(-50%); 
@@ -325,30 +423,17 @@
       justify-content: flex-end;
       border-radius: 8px 8px 0 0;
       padding: 10px 8px;
-      width: 100px;
+      width: var(--podium-width);
       color: #000;
       font-weight: bold;
       transition: all 0.5s ease;
     }
-    .podium-step-1 { 
-      background: #ffd700; 
-      height: 130px; 
-      border: 3px solid #b8860b; 
-    }
-    .podium-step-2 { 
-      background: #c0c0c0; 
-      height: 105px; 
-      border: 3px solid #808080; 
-    }
-    .podium-step-3 { 
-      background: #cd7f32; 
-      height: 80px; 
-      border: 3px solid #8b4513; 
-      color: #fff; 
-    }
-    .podium-step .medal { font-size: 2rem; margin-bottom: 3px; }
-    .podium-step .name { font-size: 0.85rem; text-transform: uppercase; }
-    .podium-step .score { font-size: 0.75rem; margin-top: 3px; }
+    .podium-step-1 { background: #ffd700; height: var(--podium-1-height); border: 3px solid #b8860b; }
+    .podium-step-2 { background: #c0c0c0; height: var(--podium-2-height); border: 3px solid #808080; }
+    .podium-step-3 { background: #cd7f32; height: var(--podium-3-height); border: 3px solid #8b4513; color: #fff; }
+    .podium-step .medal { font-size: calc(var(--score-btn-font) * 1.7); margin-bottom: 3px; }
+    .podium-step .name { font-size: calc(var(--scoreboard-font) - 0.1rem); text-transform: uppercase; }
+    .podium-step .score { font-size: calc(var(--scoreboard-font) - 0.2rem); margin-top: 3px; }
     .other-results {
       margin-top: 8px;
       display: flex;
@@ -362,13 +447,13 @@
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
-      font-size: 0.9rem;
+      font-size: var(--scoreboard-font);
     }
 
     .hidden { display: none !important; }
     .btn-start {
-      font-size: 1.3rem; 
-      padding: 12px 30px; 
+      font-size: calc(var(--current-player-font) + 0.1rem); 
+      padding: var(--action-btn-padding); 
       background: #f9c74f; 
       color: #1b4a2e;
       border: 2px solid #ffe5a3; 
@@ -381,12 +466,12 @@
     label { 
       font-weight: bold; 
       color: #f9c74f; 
-      font-size: 0.95rem; 
+      font-size: var(--label-font); 
       display: block; 
       margin-top: 4px; 
     }
     .setup-title { 
-      font-size: 1.1rem; 
+      font-size: calc(var(--label-font) + 0.15rem); 
       font-weight: bold; 
       color: #f9c74f; 
       margin-bottom: 8px; 
@@ -404,7 +489,7 @@
     .team-section h3 { 
       color: #f9c74f; 
       margin-bottom: 4px; 
-      font-size: 1rem;
+      font-size: var(--label-font);
     }
     .confetti {
       position: absolute; 
@@ -432,7 +517,7 @@
 </head>
 <body>
 <div class="container" id="app">
-  <!-- Page configuration -->
+  <!-- Le HTML est identique, seules les classes CSS changent -->
   <div id="setup">
     <div class="app-header">
       <span class="header-frog">🐸</span>
@@ -486,12 +571,11 @@
     </div>
   </div>
 
-  <!-- Page jeu -->
   <div id="game" class="hidden">
     <div class="app-header" style="margin-bottom:6px; padding:6px;">
-      <span class="header-frog" style="font-size:2rem;">🐸</span>
-      <div class="header-text" style="font-size:0.95rem;">GRENOUILLE<br>DELORME</div>
-      <span class="header-frog" style="font-size:2rem;">🐸</span>
+      <span class="header-frog">🐸</span>
+      <div class="header-text">GRENOUILLE<br>DELORME</div>
+      <span class="header-frog">🐸</span>
     </div>
     <div class="scoreboard" id="scoreboard"></div>
     <div class="current-player-info">
@@ -531,19 +615,18 @@
     <div class="animation-area" id="animArea"></div>
   </div>
 
-  <!-- Page résultats -->
   <div id="resultsScreen" class="hidden">
     <div class="app-header" style="margin-bottom:10px;">
-      <span class="header-frog" style="font-size:2rem;">🐸</span>
+      <span class="header-frog">🐸</span>
       <div class="header-text">CLASSEMENT</div>
-      <span class="header-frog" style="font-size:2rem;">🐸</span>
+      <span class="header-frog">🐸</span>
     </div>
     <div id="podiumArea"></div>
     <div class="animation-area" id="resultsConfetti" style="height:80px; position:relative;"></div>
     <button class="btn-start" onclick="resetGame()" style="margin-top:10px;">Nouvelle partie</button>
   </div>
 
-  <!-- Popup règles -->
+  <!-- Popups identiques à la version précédente -->
   <div id="rulesPopup" class="rules-popup hidden">
     <div class="rules-box">
       <h2>📖 Règles du jeu</h2>
@@ -564,7 +647,6 @@
     </div>
   </div>
 
-  <!-- Popup composition des équipes -->
   <div id="teamsPopup" class="teams-popup hidden">
     <div class="teams-box">
       <h2>👥 Composition des équipes</h2>
@@ -575,7 +657,6 @@
     </div>
   </div>
 
-  <!-- Popup confirmation reset -->
   <div id="resetPopup" class="confirm-popup hidden">
     <div class="confirm-box">
       <p>⚠️ Réinitialiser la partie ?</p>
@@ -589,7 +670,8 @@
 </div>
 
 <script>
-  // Script identique à la version précédente
+  // Le script JavaScript est identique à la version précédente
+  // (mêmes fonctions, mêmes variables)
   let players = [];
   let teams = [];
   let mode = 'points';
