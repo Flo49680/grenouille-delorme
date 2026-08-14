@@ -17,71 +17,83 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 5px;
+      padding: 0;
     }
     .container {
       width: 100%;
       max-width: 700px;
-      height: 100%;
-      max-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
       background: linear-gradient(180deg, #2d6a3f 0%, #1a4a24 100%);
-      border-radius: 20px;
-      padding: 10px 10px;
+      border-radius: 0;
+      padding: 8px 8px;
       text-align: center;
       position: relative;
-      border: 4px solid #f9c74f;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: none;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
+    @media (min-width: 500px) {
+      .container {
+        border-radius: 20px;
+        border: 4px solid #f9c74f;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        margin: 10px;
+        height: calc(100vh - 20px);
+        height: calc(100dvh - 20px);
+        max-height: 800px;
+      }
+    }
     .app-header {
       background: #f9c74f;
       color: #1b4a2e;
-      padding: 8px 10px;
-      border-radius: 15px;
-      margin-bottom: 10px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       flex-shrink: 0;
     }
     .header-frog { 
-      font-size: clamp(1.8rem, 5vw, 2.8rem); 
+      font-size: clamp(1.5rem, 5vw, 2.8rem); 
       filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.5)); 
       animation: frogWiggle 3s ease-in-out infinite; 
     }
     @keyframes frogWiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-5deg)} 75%{transform:rotate(5deg)} }
     .header-text { 
-      font-size: clamp(0.9rem, 2.2vw, 1.3rem); 
+      font-size: clamp(0.8rem, 2vw, 1.3rem); 
       font-weight: 900; 
-      letter-spacing: clamp(1px, 0.4vw, 2px); 
+      letter-spacing: clamp(1px, 0.3vw, 2px); 
       text-transform: uppercase; 
-      line-height: 1.2; 
+      line-height: 1.15; 
     }
     button {
       border: none; 
-      margin: 2px; 
-      font-size: clamp(0.85rem, 1.8vw, 1.15rem); 
+      margin: 1px; 
+      font-size: clamp(0.8rem, 1.7vw, 1.1rem); 
       font-weight: bold; 
       cursor: pointer; 
       transition: 0.15s; 
-      min-width: 35px;
+      min-width: 30px;
+      -webkit-tap-highlight-color: transparent;
     }
     button:active { transform: scale(0.95); }
     .score-btn {
-      font-size: clamp(0.8rem, 1.6vw, 1rem); 
+      font-size: clamp(0.75rem, 1.5vw, 1rem); 
       padding: 0; 
       border-radius: 50%; 
-      width: clamp(42px, 8vw, 56px); 
-      height: clamp(42px, 8vw, 56px);
+      width: clamp(38px, 9vw, 56px); 
+      height: clamp(38px, 9vw, 56px);
       display: flex; 
       align-items: center; 
       justify-content: center; 
       text-align: center; 
       line-height: 1.1;
       text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+      touch-action: manipulation;
     }
     .btn-or {
       background: radial-gradient(circle at 35% 30%, #ffe566 0%, #f9c74f 30%, #d4a017 70%, #b8860b 100%);
@@ -105,74 +117,78 @@
     }
     .action-btn, .reset-btn, .rules-btn {
       background: #f9c74f; color: #1b4a2e; border: 2px solid #ffe5a3;
-      font-size: clamp(0.75rem, 1.5vw, 0.95rem); border-radius: 15px; 
-      padding: 6px 10px;
-      box-shadow: 0 3px 0 #b07d2b, 0 4px 6px rgba(0,0,0,0.3);
+      font-size: clamp(0.7rem, 1.4vw, 0.9rem); border-radius: 12px; 
+      padding: 5px 8px;
+      box-shadow: 0 2px 0 #b07d2b, 0 3px 5px rgba(0,0,0,0.3);
+      touch-action: manipulation;
     }
     .rules-btn { background: #e9c46a; }
     .confirm-btn {
       background: #2a9d8f; color: white; border: 2px solid #48cae4;
-      font-size: clamp(0.75rem, 1.5vw, 0.95rem); border-radius: 15px; 
-      padding: 6px 10px; 
-      box-shadow: 0 3px 0 #1a5c50;
+      font-size: clamp(0.7rem, 1.4vw, 0.9rem); border-radius: 12px; 
+      padding: 5px 8px; 
+      box-shadow: 0 2px 0 #1a5c50;
     }
     input, select {
-      padding: 6px 8px; 
-      border-radius: 8px; 
+      padding: 5px 6px; 
+      border-radius: 6px; 
       border: none; 
-      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-      margin: 3px 2px; 
-      width: min(70%, 300px); 
+      font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+      margin: 2px 1px; 
+      width: min(65%, 280px); 
       background: white;
+      -webkit-appearance: none;
+      appearance: none;
     }
     .players-setup input, .team-members input, .random-players input { 
-      width: min(55%, 200px); 
-      margin: 2px; 
-      padding: 5px 8px;
+      width: min(50%, 180px); 
+      margin: 1px; 
+      padding: 4px 6px;
+      font-size: clamp(0.7rem, 1.3vw, 0.85rem);
     }
     .row { 
       display: flex; 
       flex-wrap: wrap; 
       justify-content: center; 
       align-items: center; 
-      gap: 4px; 
-      margin: 4px 0; 
+      gap: 3px; 
+      margin: 3px 0; 
     }
-    .scoreboard { margin: 5px 0; flex-shrink: 1; overflow-y: auto; }
+    .scoreboard { margin: 3px 0; flex-shrink: 1; overflow-y: auto; min-height: 0; }
     .player-score {
       display: flex; 
       justify-content: space-between; 
-      font-size: clamp(0.8rem, 1.6vw, 1rem); 
-      padding: 3px 8px; 
+      font-size: clamp(0.7rem, 1.4vw, 0.9rem); 
+      padding: 2px 6px; 
       margin: 1px 0;
     }
-    .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 6px; }
+    .current-player { background: #f9c74f; color: #1b4a2e; font-weight: bold; border-radius: 5px; }
     .current-player-info {
-      font-size: clamp(0.9rem, 1.8vw, 1.1rem); 
-      margin: 4px 0; 
+      font-size: clamp(0.8rem, 1.6vw, 1rem); 
+      margin: 3px 0; 
       color: #f9c74f;
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      gap: 6px; 
+      gap: 5px; 
       flex-wrap: wrap;
     }
     .round-points-box { 
-      font-size: clamp(1.1rem, 2.2vw, 1.4rem); 
+      font-size: clamp(1rem, 2vw, 1.3rem); 
       font-weight: bold; 
-      margin: 2px 0 5px; 
+      margin: 1px 0 3px; 
       color: #f9c74f; 
     }
     .palets-remaining { 
       display: flex; 
       align-items: center; 
-      gap: 3px; 
+      gap: 2px; 
       flex-wrap: wrap; 
       justify-content: center; 
     }
     .palet-dot-small {
-      width: clamp(9px, 1.8vw, 12px); 
-      height: clamp(9px, 1.8vw, 12px); 
+      width: clamp(8px, 1.6vw, 11px); 
+      height: clamp(8px, 1.6vw, 11px); 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
       border: 1px solid #4a4a4a; 
@@ -183,14 +199,14 @@
       background: radial-gradient(circle at 35% 30%, #3a3a3a 0%, #1a1a1a 80%);
       opacity: 0.3; border-color: #2a2a2a; box-shadow: none;
     }
-    .palet-pyramid { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    .palet-pyramid .row-two { display: flex; gap: 3px; }
+    .palet-pyramid { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+    .palet-pyramid .row-two { display: flex; gap: 2px; }
     .palet-dot {
-      width: clamp(12px, 2.5vw, 16px); 
-      height: clamp(12px, 2.5vw, 16px); 
+      width: clamp(10px, 2vw, 14px); 
+      height: clamp(10px, 2vw, 14px); 
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #5a5a5a 0%, #3a3a3a 50%, #1a1a1a 100%);
-      border: 1.5px solid #4a4a4a; 
+      border: 1px solid #4a4a4a; 
       box-shadow: 0 1px 2px rgba(0,0,0,0.6);
     }
     .confirm-popup, .rules-popup, .teams-popup {
@@ -208,85 +224,85 @@
     .confirm-box, .rules-box, .teams-box {
       background: #2d6a3f; 
       border: 3px solid #f9c74f; 
-      border-radius: 15px;
-      padding: 15px; 
+      border-radius: 12px;
+      padding: 12px; 
       text-align: center; 
-      max-width: min(90%, 450px); 
-      width: 90%;
-      max-height: 75vh; 
+      max-width: min(92%, 420px); 
+      width: 92%;
+      max-height: 70vh; 
       overflow-y: auto; 
       color: #fff;
     }
-    .rules-box { text-align: left; font-size: clamp(0.75rem, 1.4vw, 0.9rem); line-height: 1.4; }
-    .rules-box h2 { text-align: center; margin-bottom: 8px; }
-    .teams-box { font-size: clamp(0.75rem, 1.4vw, 0.9rem); }
-    .teams-box h2 { text-align: center; margin-bottom: 8px; }
+    .rules-box { text-align: left; font-size: clamp(0.7rem, 1.3vw, 0.85rem); line-height: 1.35; }
+    .rules-box h2 { text-align: center; margin-bottom: 6px; }
+    .teams-box { font-size: clamp(0.7rem, 1.3vw, 0.85rem); }
+    .teams-box h2 { text-align: center; margin-bottom: 6px; }
     .team-display {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 8px 0;
+      gap: 6px;
+      margin: 6px 0;
     }
     .team-card {
       background: rgba(255,255,255,0.1);
-      padding: 8px;
-      border-radius: 10px;
-      width: min(45%, 180px);
-      min-width: 100px;
+      padding: 6px;
+      border-radius: 8px;
+      width: min(45%, 160px);
+      min-width: 90px;
     }
     .team-card h3 {
       color: #f9c74f;
-      margin-bottom: 4px;
-      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      margin-bottom: 3px;
+      font-size: clamp(0.7rem, 1.3vw, 0.9rem);
     }
     .team-card ul { list-style: none; padding: 0; text-align: left; }
-    .team-card li { padding: 1px 0; font-size: clamp(0.7rem, 1.3vw, 0.85rem); }
+    .team-card li { padding: 1px 0; font-size: clamp(0.65rem, 1.2vw, 0.8rem); }
     .confirm-box p { 
-      font-size: clamp(0.9rem, 1.6vw, 1.1rem); 
+      font-size: clamp(0.85rem, 1.5vw, 1rem); 
       font-weight: bold; 
-      margin-bottom: 10px; 
+      margin-bottom: 8px; 
     }
-    .confirm-box .row, .rules-box .row, .teams-box .row { gap: 10px; }
+    .confirm-box .row, .rules-box .row, .teams-box .row { gap: 8px; }
     .animation-area { 
       position: relative; 
-      height: clamp(30px, 7vw, 50px); 
+      height: clamp(25px, 6vw, 45px); 
       overflow: hidden; 
-      margin-top: 3px; 
+      margin-top: 2px; 
       flex-shrink: 0;
     }
     .frog-anim { 
-      font-size: clamp(2rem, 4vw, 3rem); 
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); 
       position: absolute; 
       left: 50%; 
       transform: translateX(-50%); 
       animation: bounce 0.6s ease; 
     }
     @keyframes bounce { 
-      0%{top:20px} 
-      30%{top:-8px} 
-      50%{top:8px} 
+      0%{top:18px} 
+      30%{top:-7px} 
+      50%{top:7px} 
       70%{top:-3px} 
-      100%{top:20px} 
+      100%{top:18px} 
     }
     .moulin { 
-      width: clamp(30px, 6vw, 45px); 
-      height: clamp(30px, 6vw, 45px); 
+      width: clamp(25px, 5vw, 40px); 
+      height: clamp(25px, 5vw, 40px); 
       position: absolute; 
       left: 50%; 
-      top: 3px; 
+      top: 2px; 
       transform: translateX(-50%); 
       animation: spin 1.5s linear infinite; 
     }
     .blade {
       position: absolute; 
-      width: clamp(6px, 1.5vw, 10px); 
-      height: clamp(18px, 4vw, 28px); 
+      width: clamp(5px, 1.2vw, 9px); 
+      height: clamp(15px, 3.5vw, 25px); 
       background: #c2a26b; 
       left: 50%; 
       top: 15%; 
-      margin-left: clamp(-5px, -1vw, -5px);
-      border-radius: 5px; 
+      margin-left: clamp(-4px, -0.8vw, -4px);
+      border-radius: 4px; 
       transform-origin: 50% 85%;
     }
     .blade:nth-child(1){transform:rotate(0)} 
@@ -300,114 +316,126 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 8px;
-      margin: 8px 0 4px;
-      padding: 5px;
+      gap: 6px;
+      margin: 6px 0 3px;
+      padding: 3px;
     }
     .podium-step {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      border-radius: 8px 8px 0 0;
-      padding: 8px 5px;
-      width: clamp(60px, 15vw, 100px);
+      border-radius: 6px 6px 0 0;
+      padding: 6px 4px;
+      width: clamp(55px, 14vw, 90px);
       color: #000;
       font-weight: bold;
       transition: all 0.5s ease;
     }
     .podium-step-1 { 
       background: #ffd700; 
-      height: clamp(70px, 20vw, 120px); 
+      height: clamp(55px, 16vw, 100px); 
       border: 2px solid #b8860b; 
     }
     .podium-step-2 { 
       background: #c0c0c0; 
-      height: clamp(55px, 16vw, 95px); 
+      height: clamp(45px, 13vw, 80px); 
       border: 2px solid #808080; 
     }
     .podium-step-3 { 
       background: #cd7f32; 
-      height: clamp(40px, 12vw, 70px); 
+      height: clamp(35px, 10vw, 60px); 
       border: 2px solid #8b4513; 
       color: #fff; 
     }
-    .podium-step .medal { font-size: clamp(1.2rem, 3vw, 1.8rem); margin-bottom: 2px; }
-    .podium-step .name { font-size: clamp(0.55rem, 1.2vw, 0.8rem); text-transform: uppercase; }
-    .podium-step .score { font-size: clamp(0.5rem, 1vw, 0.7rem); margin-top: 2px; }
+    .podium-step .medal { font-size: clamp(1rem, 2.5vw, 1.5rem); margin-bottom: 1px; }
+    .podium-step .name { font-size: clamp(0.5rem, 1.1vw, 0.7rem); text-transform: uppercase; }
+    .podium-step .score { font-size: clamp(0.45rem, 0.9vw, 0.6rem); margin-top: 1px; }
     .other-results {
-      margin-top: 6px;
+      margin-top: 4px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      padding: 0 5px;
+      gap: 2px;
+      padding: 0 3px;
     }
     .other-result-item {
       background: rgba(255,255,255,0.15);
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 3px 6px;
+      border-radius: 5px;
       display: flex;
       justify-content: space-between;
-      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      font-size: clamp(0.55rem, 1.1vw, 0.75rem);
     }
 
-    .hidden { display: none; }
+    .hidden { display: none !important; }
     .btn-start {
-      font-size: clamp(1rem, 2vw, 1.3rem); 
-      padding: 8px 20px; 
+      font-size: clamp(0.9rem, 1.8vw, 1.2rem); 
+      padding: 6px 16px; 
       background: #f9c74f; 
       color: #1b4a2e;
       border: 2px solid #ffe5a3; 
-      margin-top: 8px; 
-      border-radius: 20px; 
+      margin-top: 5px; 
+      border-radius: 15px; 
       letter-spacing: 1px; 
-      box-shadow: 0 3px 0 #b07d2b;
+      box-shadow: 0 2px 0 #b07d2b;
+      touch-action: manipulation;
     }
     label { 
       font-weight: bold; 
       color: #f9c74f; 
-      font-size: clamp(0.7rem, 1.3vw, 0.9rem); 
+      font-size: clamp(0.65rem, 1.2vw, 0.8rem); 
       display: block; 
-      margin-top: 3px; 
+      margin-top: 2px; 
     }
     .setup-title { 
-      font-size: clamp(0.9rem, 1.8vw, 1.1rem); 
+      font-size: clamp(0.8rem, 1.5vw, 1rem); 
       font-weight: bold; 
       color: #f9c74f; 
-      margin-bottom: 6px; 
+      margin-bottom: 4px; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      gap: 8px; 
+      gap: 6px; 
     }
     .team-section { 
-      margin: 4px 0; 
-      padding: 5px; 
+      margin: 3px 0; 
+      padding: 4px; 
       background: rgba(255,255,255,0.1); 
-      border-radius: 10px; 
+      border-radius: 8px; 
     }
     .team-section h3 { 
       color: #f9c74f; 
-      margin-bottom: 2px; 
-      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      margin-bottom: 1px; 
+      font-size: clamp(0.7rem, 1.3vw, 0.9rem);
     }
     .confetti {
       position: absolute; 
-      width: clamp(6px, 1.2vw, 10px); 
-      height: clamp(6px, 1.2vw, 10px); 
+      width: clamp(5px, 1vw, 8px); 
+      height: clamp(5px, 1vw, 8px); 
       border-radius: 50%;
       animation: fall linear forwards;
     }
     @keyframes fall {
       0% { transform: translateY(0) rotate(0); opacity: 1; }
-      100% { transform: translateY(clamp(120px, 30vw, 200px)) rotate(720deg); opacity: 0; }
+      100% { transform: translateY(clamp(80px, 25vw, 150px)) rotate(720deg); opacity: 0; }
+    }
+    #game, #resultsScreen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #setup {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
   </style>
 </head>
 <body>
 <div class="container" id="app">
   <!-- Page configuration -->
-  <div id="setup" style="overflow-y:auto; flex:1;">
+  <div id="setup">
     <div class="app-header">
       <span class="header-frog">🐸</span>
       <div class="header-text">JEU DE LA<br>GRENOUILLE<br>DE LA FAMILLE<br>DELORME</div>
@@ -455,17 +483,17 @@
     <div id="roundsDiv" class="hidden"><label>Manches :</label><input type="number" id="numRounds" min="1" value="3"></div>
     <div><label>Palets/joueur :</label><input type="number" id="paletsPerRound" min="1" value="8"></div>
     <button class="btn-start" onclick="startGame()">LANCER</button>
-    <div style="margin-top:5px;">
+    <div style="margin-top:3px;">
       <button class="rules-btn" onclick="showRules()">📖 Règles</button>
     </div>
   </div>
 
   <!-- Page jeu -->
-  <div id="game" class="hidden" style="flex-direction:column; flex:1; overflow:hidden;">
-    <div class="app-header" style="margin-bottom:5px; padding:6px;">
-      <span class="header-frog" style="font-size:clamp(1.5rem,3vw,2rem);">🐸</span>
-      <div class="header-text" style="font-size:clamp(0.8rem,1.5vw,1rem);">GRENOUILLE<br>DELORME</div>
-      <span class="header-frog" style="font-size:clamp(1.5rem,3vw,2rem);">🐸</span>
+  <div id="game" class="hidden">
+    <div class="app-header" style="margin-bottom:4px; padding:4px;">
+      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
+      <div class="header-text" style="font-size:clamp(0.7rem,1.4vw,1rem);">GRENOUILLE<br>DELORME</div>
+      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
     </div>
     <div class="scoreboard" id="scoreboard"></div>
     <div class="current-player-info">
@@ -496,7 +524,7 @@
       <button class="score-btn btn-bronze" onclick="addScore(90)">90</button>
     </div>
     <div class="row"><button class="score-btn btn-zero" onclick="addScore(0)">0</button></div>
-    <div class="row" style="margin-top:5px;">
+    <div class="row" style="margin-top:3px;">
       <button class="action-btn" onclick="undoLastScore()">Annuler</button>
       <button class="action-btn" onclick="endRoundEarly()">Finir manche</button>
       <button class="reset-btn" onclick="showResetConfirm()">Nouveau</button>
@@ -506,15 +534,15 @@
   </div>
 
   <!-- Page résultats -->
-  <div id="resultsScreen" class="hidden" style="flex:1; overflow:hidden;">
-    <div class="app-header" style="margin-bottom:8px;">
-      <span class="header-frog" style="font-size:clamp(1.5rem,3vw,2rem);">🐸</span>
+  <div id="resultsScreen" class="hidden">
+    <div class="app-header" style="margin-bottom:6px;">
+      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
       <div class="header-text">CLASSEMENT</div>
-      <span class="header-frog" style="font-size:clamp(1.5rem,3vw,2rem);">🐸</span>
+      <span class="header-frog" style="font-size:clamp(1.3rem,3vw,2rem);">🐸</span>
     </div>
     <div id="podiumArea"></div>
-    <div class="animation-area" id="resultsConfetti" style="height:clamp(60px,15vw,100px); position:relative;"></div>
-    <button class="btn-start" onclick="resetGame()" style="margin-top:10px;">Nouvelle partie</button>
+    <div class="animation-area" id="resultsConfetti" style="height:clamp(40px,10vw,80px); position:relative;"></div>
+    <button class="btn-start" onclick="resetGame()" style="margin-top:6px;">Nouvelle partie</button>
   </div>
 
   <!-- Popup règles -->
@@ -523,7 +551,7 @@
       <h2>📖 Règles du jeu</h2>
       <p>Le jeu de la Grenouille se pratique en plein air ou à l'intérieur.</p>
       <p>La PARTIE peut se jouer :</p>
-      <ul style="margin-left:20px;">
+      <ul style="margin-left:15px;">
         <li>Individuellement, dans ce cas, chaque joueur peut utiliser ses 8 palets.</li>
         <li>Par équipe, les palets étant alors partagés entre les joueurs, en une ou plusieurs manches dont le nombre est décidé à l'avance.</li>
       </ul>
@@ -532,7 +560,7 @@
       <p>On tire au sort le joueur ou l'équipe qui jouera en premier.</p>
       <p>Chaque joueur se place à environ 3 mètres du jeu.</p>
       <p><strong>Bonus :</strong> L'équipe ou le joueur qui réussit la "Grenouille" 4 fois sur 8 palets dans une même partie marque 1000 points supplémentaires.</p>
-      <div class="row" style="justify-content:center; margin-top:15px;">
+      <div class="row" style="justify-content:center; margin-top:10px;">
         <button class="action-btn" onclick="hideRules()">Fermer</button>
       </div>
     </div>
@@ -543,7 +571,7 @@
     <div class="teams-box">
       <h2>👥 Composition des équipes</h2>
       <div class="team-display" id="teamsPopupContent"></div>
-      <div class="row" style="justify-content:center; margin-top:15px;">
+      <div class="row" style="justify-content:center; margin-top:10px;">
         <button class="action-btn" onclick="hideTeamsPopup()">Commencer</button>
       </div>
     </div>
@@ -553,7 +581,7 @@
   <div id="resetPopup" class="confirm-popup hidden">
     <div class="confirm-box">
       <p>⚠️ Réinitialiser la partie ?</p>
-      <p style="font-size:0.85rem; font-weight:normal;">Tous les scores seront effacés.</p>
+      <p style="font-size:0.8rem; font-weight:normal;">Tous les scores seront effacés.</p>
       <div class="row">
         <button class="confirm-btn" onclick="resetGame()">✅ Oui</button>
         <button class="reset-btn" onclick="hideResetConfirm()">❌ Non</button>
@@ -590,6 +618,7 @@
       const input = document.createElement('input');
       input.type = 'text'; input.id = `playerName${i}`;
       input.placeholder = `Joueur ${i+1}`; input.value = '';
+      input.style.fontSize = '16px'; // Éviter le zoom automatique iOS
       container.appendChild(input);
     }
   }
@@ -605,7 +634,7 @@
       div.innerHTML = `
         <h3>Équipe ${i+1}</h3>
         <label>Nom :</label>
-        <input type="text" id="teamName${i}" placeholder="Équipe ${i+1}" value="Équipe ${i+1}">
+        <input type="text" id="teamName${i}" placeholder="Équipe ${i+1}" value="Équipe ${i+1}" style="font-size:16px;">
         <label>Membres :</label>
         <input type="number" id="teamMembersCount${i}" min="1" max="4" value="2" onchange="generateMemberInputs(${i})">
         <div id="teamMembers${i}" class="team-members"></div>
@@ -624,6 +653,7 @@
       input.type = 'text';
       input.id = `team${teamIndex}Member${i}`;
       input.placeholder = `Joueur ${i+1}`;
+      input.style.fontSize = '16px';
       container.appendChild(input);
     }
   }
@@ -637,6 +667,7 @@
       input.type = 'text';
       input.id = `randomPlayer${i}`;
       input.placeholder = `Joueur ${i+1}`;
+      input.style.fontSize = '16px';
       container.appendChild(input);
     }
   }
@@ -1111,7 +1142,7 @@
   function launchConfetti(areaId) {
     const area = document.getElementById(areaId);
     area.innerHTML = '';
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 50; i++) {
       const conf = document.createElement('div');
       conf.className = 'confetti';
       conf.style.left = Math.random() * 100 + '%';
