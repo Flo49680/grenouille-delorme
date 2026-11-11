@@ -200,10 +200,10 @@
       color: #fff; border: 3px solid #555; 
       box-shadow: 0 4px 0 #1a1a1a, 0 6px 10px rgba(0,0,0,0.5);
     }
-    /* Boutons d'action sous les scores */
+    /* Boutons d'action sous les scores — les deux en bronze */
     .btn-invert, .btn-edit {
-      font-size: calc(var(--score-btn-font) * 0.75); 
-      padding: 0 8px; 
+      font-size: calc(var(--score-btn-font) * 0.8); 
+      padding: 0 10px; 
       border-radius: 30px; 
       height: calc(var(--score-btn-size) * 0.7);
       display: flex; 
@@ -213,19 +213,15 @@
       touch-action: manipulation;
       flex-shrink: 0;
       white-space: nowrap;
+      color: #fff;
+      border: 3px solid #daa06d;
+      box-shadow: 0 4px 0 #5c3317, 0 6px 10px rgba(0,0,0,0.3);
+      background: radial-gradient(circle at 35% 30%, #f0d0a8 0%, #cd7f32 40%, #a0522d 80%, #6b3a1f 100%);
     }
     .btn-invert {
-      background: linear-gradient(180deg, #6cb0e0, #3a7ea8);
-      color: white;
-      border: 3px solid #a0d4f0;
-      box-shadow: 0 4px 0 #1e4a68, 0 6px 10px rgba(0,0,0,0.3);
       min-width: calc(var(--score-btn-size) * 1.8);
     }
     .btn-edit {
-      background: linear-gradient(180deg, #f0a0d0, #c06090);
-      color: white;
-      border: 3px solid #f4c0e0;
-      box-shadow: 0 4px 0 #7a3050, 0 6px 10px rgba(0,0,0,0.3);
       min-width: calc(var(--score-btn-size) * 2.4);
     }
     .action-btn, .reset-btn, .rules-btn {
@@ -567,6 +563,9 @@
       margin: 10px auto !important;
       display: block;
     }
+    .zero-spacer {
+      margin-bottom: 18px;
+    }
   </style>
 </head>
 <body>
@@ -644,16 +643,16 @@
     </div>
     <div class="round-points-box">Points du tour : <span id="roundPoints">0</span></div>
     <div id="scoreButtonsContainer"></div>
-    <!-- Cases en bas : inverser et modifier score -->
-    <div class="row" style="margin-top:8px; gap:12px;">
-      <button class="btn-invert" onclick="toggleBoardOrientation()">🔄 Inverser</button>
-      <button class="btn-edit" onclick="showSelectPlayerForEdit()">✏️ Modifier score</button>
-    </div>
+    <div class="zero-spacer"></div>
     <div class="row" style="margin-top:8px;">
       <button class="action-btn" onclick="undoLastScore()">Annuler</button>
       <button class="action-btn" onclick="endRoundEarly()">Finir</button>
       <button class="reset-btn" onclick="showResetConfirm()">Nouveau</button>
       <button class="rules-btn" onclick="showRules()">📖</button>
+    </div>
+    <div class="row" style="margin-top:8px; gap:12px;">
+      <button class="btn-invert" onclick="toggleBoardOrientation()">▲▼ Inverser</button>
+      <button class="btn-edit" onclick="showSelectPlayerForEdit()">✎ Modifier score</button>
     </div>
     <div class="animation-area" id="animArea"></div>
   </div>
@@ -701,7 +700,7 @@
 
   <div id="selectPlayerPopup" class="select-popup hidden">
     <div class="select-box">
-      <h2>✏️ Qui modifier ?</h2>
+      <h2>✎ Qui modifier ?</h2>
       <div id="selectPlayerList"></div>
       <div class="row" style="margin-top:15px;">
         <button class="reset-btn" onclick="hideSelectPlayer()">❌ Annuler</button>
@@ -1205,7 +1204,7 @@
       let cls = (p === currentPlayer) ? 'player-score current-player' : 'player-score';
       let mark = p.finished ? ` (${p.finishRank}er)` : '';
       return `<div class="${cls}">
-        <span class="clickable-name" onclick="openEditScore('player', ${i})">${p.name}${mark} ✏️</span>
+        <span class="clickable-name" onclick="openEditScore('player', ${i})">${p.name}${mark} ✎</span>
         <span>${p.totalScore} pts</span>
       </div>`;
     }).join('');
@@ -1221,7 +1220,7 @@
         membersList = '<span class="members-list">' + t.members.map(m => m.name).join(', ') + '</span>';
       }
       return `<div class="${cls}">
-        <span class="clickable-name" onclick="openEditScore('team', ${i})">${t.name}${mark} ✏️${membersList}</span>
+        <span class="clickable-name" onclick="openEditScore('team', ${i})">${t.name}${mark} ✎${membersList}</span>
         <span>${t.totalScore} pts</span>
       </div>`;
     }).join('');
