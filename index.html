@@ -200,6 +200,34 @@
       color: #fff; border: 3px solid #555; 
       box-shadow: 0 4px 0 #1a1a1a, 0 6px 10px rgba(0,0,0,0.5);
     }
+    /* Boutons d'action sous les scores */
+    .btn-invert, .btn-edit {
+      font-size: calc(var(--score-btn-font) * 0.75); 
+      padding: 0 8px; 
+      border-radius: 30px; 
+      height: calc(var(--score-btn-size) * 0.7);
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center;
+      touch-action: manipulation;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .btn-invert {
+      background: linear-gradient(180deg, #6cb0e0, #3a7ea8);
+      color: white;
+      border: 3px solid #a0d4f0;
+      box-shadow: 0 4px 0 #1e4a68, 0 6px 10px rgba(0,0,0,0.3);
+      min-width: calc(var(--score-btn-size) * 1.8);
+    }
+    .btn-edit {
+      background: linear-gradient(180deg, #f0a0d0, #c06090);
+      color: white;
+      border: 3px solid #f4c0e0;
+      box-shadow: 0 4px 0 #7a3050, 0 6px 10px rgba(0,0,0,0.3);
+      min-width: calc(var(--score-btn-size) * 2.4);
+    }
     .action-btn, .reset-btn, .rules-btn {
       background: #f9c74f; color: #1b4a2e; border: 2px solid #ffe5a3;
       font-size: var(--action-btn-font); border-radius: 18px; 
@@ -294,7 +322,7 @@
       border: 1.5px solid #4a4a4a; 
       box-shadow: 0 1px 2px rgba(0,0,0,0.6);
     }
-    .confirm-popup, .rules-popup, .teams-popup {
+    .confirm-popup, .rules-popup, .teams-popup, .edit-popup, .select-popup {
       position: fixed; 
       top: 0; 
       left: 0; 
@@ -306,7 +334,7 @@
       justify-content: center; 
       z-index: 100;
     }
-    .confirm-box, .rules-box, .teams-box {
+    .confirm-box, .rules-box, .teams-box, .edit-box, .select-box {
       background: #2d6a3f; 
       border: 3px solid #f9c74f; 
       border-radius: 15px;
@@ -322,6 +350,26 @@
     .rules-box h2 { text-align: center; margin-bottom: 10px; }
     .teams-box { font-size: var(--scoreboard-font); }
     .teams-box h2 { text-align: center; margin-bottom: 10px; }
+    .edit-box { font-size: var(--scoreboard-font); }
+    .edit-box h2 { text-align: center; margin-bottom: 10px; font-size: var(--current-player-font); }
+    .select-box { font-size: var(--scoreboard-font); }
+    .select-box h2 { text-align: center; margin-bottom: 10px; font-size: var(--current-player-font); }
+    .select-btn {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+      padding: 12px;
+      font-size: var(--scoreboard-font);
+      font-weight: bold;
+      border-radius: 12px;
+      background: #f9c74f;
+      color: #1b4a2e;
+      border: 2px solid #ffe5a3;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #b07d2b;
+      text-align: left;
+    }
+    .select-btn:active { transform: scale(0.98); }
     .team-display {
       display: flex;
       justify-content: space-around;
@@ -494,6 +542,31 @@
       opacity: 0.8;
       display: block;
     }
+    .clickable-name {
+      cursor: pointer;
+      border-bottom: 1px dashed rgba(255,255,255,0.5);
+      transition: opacity 0.2s;
+    }
+    .clickable-name:hover, .clickable-name:active {
+      opacity: 0.7;
+    }
+    .current-player .clickable-name {
+      border-bottom-color: rgba(27,74,46,0.5);
+    }
+    .quick-btn {
+      font-size: 0.75rem !important;
+      padding: 5px 8px !important;
+      border-radius: 12px !important;
+      min-width: 0 !important;
+    }
+    .edit-input {
+      font-size: 16px !important;
+      text-align: center;
+      width: 80% !important;
+      max-width: 200px;
+      margin: 10px auto !important;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -545,6 +618,13 @@
     <div id="pointsTargetDiv"><label>Objectif :</label><input type="number" id="pointsTarget" min="100" value="1000" step="100"></div>
     <div id="roundsDiv" class="hidden"><label>Manches :</label><input type="number" id="numRounds" min="1" value="3"></div>
     <div><label>Palets/joueur :</label><input type="number" id="paletsPerRound" min="1" value="8"></div>
+    <div>
+      <label>Orientation du plateau :</label>
+      <select id="boardOrientation">
+        <option value="normal">Normal</option>
+        <option value="inverted">Inversé (haut ↔ bas)</option>
+      </select>
+    </div>
     <button class="btn-start" onclick="startGame()">LANCER</button>
     <div style="margin-top:5px;">
       <button class="rules-btn" onclick="showRules()">📖 Règles</button>
@@ -563,30 +643,13 @@
       <div class="palets-remaining" id="paletsRemaining"></div>
     </div>
     <div class="round-points-box">Points du tour : <span id="roundPoints">0</span></div>
-    <div class="row">
-      <button class="score-btn btn-argent" onclick="addScore(200)">200</button>
-      <button class="score-btn btn-or" onclick="addScore(1000)">1000</button>
-      <button class="score-btn btn-argent" onclick="addScore(200)">200</button>
+    <div id="scoreButtonsContainer"></div>
+    <!-- Cases en bas : inverser et modifier score -->
+    <div class="row" style="margin-top:8px; gap:12px;">
+      <button class="btn-invert" onclick="toggleBoardOrientation()">🔄 Inverser</button>
+      <button class="btn-edit" onclick="showSelectPlayerForEdit()">✏️ Modifier score</button>
     </div>
-    <div class="row">
-      <button class="score-btn btn-bronze" onclick="addScore(60)">60</button>
-      <button class="score-btn btn-bronze" onclick="addScore(10)">10</button>
-      <button class="score-btn btn-bronze" onclick="addScore(20)">20</button>
-      <button class="score-btn btn-bronze" onclick="addScore(70)">70</button>
-    </div>
-    <div class="row">
-      <button class="score-btn btn-or" onclick="addScore(500)">500</button>
-      <button class="score-btn btn-or" onclick="addScore(2000)">2000</button>
-      <button class="score-btn btn-or" onclick="addScore(500)">500</button>
-    </div>
-    <div class="row">
-      <button class="score-btn btn-bronze" onclick="addScore(80)">80</button>
-      <button class="score-btn btn-bronze" onclick="addScore(30)">30</button>
-      <button class="score-btn btn-bronze" onclick="addScore(40)">40</button>
-      <button class="score-btn btn-bronze" onclick="addScore(90)">90</button>
-    </div>
-    <div class="row"><button class="score-btn btn-zero" onclick="addScore(0)">0</button></div>
-    <div class="row" style="margin-top:5px;">
+    <div class="row" style="margin-top:8px;">
       <button class="action-btn" onclick="undoLastScore()">Annuler</button>
       <button class="action-btn" onclick="endRoundEarly()">Finir</button>
       <button class="reset-btn" onclick="showResetConfirm()">Nouveau</button>
@@ -636,6 +699,53 @@
     </div>
   </div>
 
+  <div id="selectPlayerPopup" class="select-popup hidden">
+    <div class="select-box">
+      <h2>✏️ Qui modifier ?</h2>
+      <div id="selectPlayerList"></div>
+      <div class="row" style="margin-top:15px;">
+        <button class="reset-btn" onclick="hideSelectPlayer()">❌ Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="editScorePopup" class="edit-popup hidden">
+    <div class="edit-box">
+      <h2 id="editScoreTitle">Modifier le score</h2>
+      <p id="editScoreCurrent" style="font-weight:bold; margin-bottom:5px;">Score actuel : 0 pts</p>
+      <p style="font-size:0.9rem; margin-bottom:5px;">Saisissez un montant à ajouter ou retirer :</p>
+      <input type="number" id="editScoreAmount" class="edit-input" placeholder="+ / - points" step="1">
+      <div class="row" style="gap:4px; margin-top:10px;">
+        <button class="action-btn quick-btn" onclick="quickEditScore(-1800)">-1800</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(-1000)">-1000</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(-500)">-500</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(-100)">-100</button>
+      </div>
+      <div class="row" style="gap:4px; margin-top:4px;">
+        <button class="action-btn quick-btn" onclick="quickEditScore(-90)">-90</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(-50)">-50</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(-10)">-10</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(0)">0</button>
+      </div>
+      <div class="row" style="gap:4px; margin-top:4px;">
+        <button class="action-btn quick-btn" onclick="quickEditScore(10)">+10</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(50)">+50</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(90)">+90</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(100)">+100</button>
+      </div>
+      <div class="row" style="gap:4px; margin-top:4px;">
+        <button class="action-btn quick-btn" onclick="quickEditScore(500)">+500</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(1000)">+1000</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(1800)">+1800</button>
+        <button class="action-btn quick-btn" onclick="quickEditScore(2000)">+2000</button>
+      </div>
+      <div class="row" style="margin-top:15px; gap:15px;">
+        <button class="confirm-btn" onclick="applyEditScore()">✅ Valider</button>
+        <button class="reset-btn" onclick="hideEditScore()">❌ Annuler</button>
+      </div>
+    </div>
+  </div>
+
   <div id="resetPopup" class="confirm-popup hidden">
     <div class="confirm-box">
       <p>⚠️ Réinitialiser la partie ?</p>
@@ -667,6 +777,9 @@
   let gameModeType = 'individuel';
   let teamMembersData = [];
   let teamsPopupShown = false;
+  let invertBoard = false;
+  let editTargetType = null;
+  let editTargetIndex = null;
 
   function generateNameInputs() {
     const n = parseInt(document.getElementById('numPlayers').value) || 2;
@@ -775,6 +888,8 @@
   function hideRules() { document.getElementById('rulesPopup').classList.add('hidden'); }
   function showTeamsPopup() { document.getElementById('teamsPopup').classList.remove('hidden'); }
   function hideTeamsPopup() { document.getElementById('teamsPopup').classList.add('hidden'); }
+  function showSelectPlayer() { document.getElementById('selectPlayerPopup').classList.remove('hidden'); }
+  function hideSelectPlayer() { document.getElementById('selectPlayerPopup').classList.add('hidden'); }
 
   function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -784,6 +899,87 @@
     return arr;
   }
 
+  function generateScoreButtons() {
+    const container = document.getElementById('scoreButtonsContainer');
+    container.innerHTML = '';
+    
+    const normalLines = [
+      [200, 1000, 200],
+      [60, 10, 20, 70],
+      [500, 2000, 500],
+      [80, 30, 40, 90]
+    ];
+    
+    let lines;
+    if (invertBoard) {
+      lines = [...normalLines].reverse();
+    } else {
+      lines = normalLines;
+    }
+    
+    lines.forEach(line => {
+      const row = document.createElement('div');
+      row.className = 'row';
+      line.forEach(value => {
+        const btn = document.createElement('button');
+        let cls = 'score-btn';
+        if (value === 1000 || value === 2000 || value === 500) cls += ' btn-or';
+        else if (value === 200) cls += ' btn-argent';
+        else cls += ' btn-bronze';
+        btn.className = cls;
+        btn.textContent = value;
+        btn.onclick = () => addScore(value);
+        row.appendChild(btn);
+      });
+      container.appendChild(row);
+    });
+    
+    const zeroRow = document.createElement('div');
+    zeroRow.className = 'row';
+    const zeroBtn = document.createElement('button');
+    zeroBtn.className = 'score-btn btn-zero';
+    zeroBtn.textContent = '0';
+    zeroBtn.onclick = () => addScore(0);
+    zeroRow.appendChild(zeroBtn);
+    container.appendChild(zeroRow);
+  }
+
+  function toggleBoardOrientation() {
+    invertBoard = !invertBoard;
+    generateScoreButtons();
+  }
+
+  function showSelectPlayerForEdit() {
+    const list = document.getElementById('selectPlayerList');
+    list.innerHTML = '';
+    
+    if (gameModeType === 'individuel') {
+      players.forEach((p, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'select-btn';
+        btn.textContent = `${p.name} — ${p.totalScore} pts`;
+        btn.onclick = () => {
+          hideSelectPlayer();
+          openEditScore('player', i);
+        };
+        list.appendChild(btn);
+      });
+    } else {
+      teams.forEach((t, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'select-btn';
+        btn.textContent = `${t.name} — ${t.totalScore} pts`;
+        btn.onclick = () => {
+          hideSelectPlayer();
+          openEditScore('team', i);
+        };
+        list.appendChild(btn);
+      });
+    }
+    
+    showSelectPlayer();
+  }
+
   function startGame() {
     const type = document.getElementById('gameModeType').value;
     gameModeType = type;
@@ -791,6 +987,7 @@
     pointsTarget = parseInt(document.getElementById('pointsTarget').value) || 1000;
     numRounds = parseInt(document.getElementById('numRounds').value) || 3;
     paletsPerRound = parseInt(document.getElementById('paletsPerRound').value) || 8;
+    invertBoard = document.getElementById('boardOrientation').value === 'inverted';
 
     if (type === 'individuel') {
       const n = parseInt(document.getElementById('numPlayers').value) || 2;
@@ -859,6 +1056,8 @@
     gameOver = false;
     lastScores = [];
     finishOrder = [];
+
+    generateScoreButtons();
 
     document.getElementById('setup').classList.add('hidden');
     document.getElementById('game').classList.remove('hidden');
@@ -1002,24 +1201,96 @@
 
   function renderScoreboardIndividuel(currentPlayer) {
     const sb = document.getElementById('scoreboard');
-    sb.innerHTML = players.map(p => {
+    sb.innerHTML = players.map((p, i) => {
       let cls = (p === currentPlayer) ? 'player-score current-player' : 'player-score';
       let mark = p.finished ? ` (${p.finishRank}er)` : '';
-      return `<div class="${cls}"><span>${p.name}${mark}</span><span>${p.totalScore} pts</span></div>`;
+      return `<div class="${cls}">
+        <span class="clickable-name" onclick="openEditScore('player', ${i})">${p.name}${mark} ✏️</span>
+        <span>${p.totalScore} pts</span>
+      </div>`;
     }).join('');
   }
 
   function renderScoreboardEquipe(currentTeam) {
     const sb = document.getElementById('scoreboard');
-    sb.innerHTML = teams.map(t => {
+    sb.innerHTML = teams.map((t, i) => {
       let cls = (t === currentTeam) ? 'player-score current-player' : 'player-score';
       let mark = t.finished ? ` (${t.finishRank}er)` : '';
       let membersList = '';
       if (t.members && t.members.length > 0) {
         membersList = '<span class="members-list">' + t.members.map(m => m.name).join(', ') + '</span>';
       }
-      return `<div class="${cls}"><span>${t.name}${mark}${membersList}</span><span>${t.totalScore} pts</span></div>`;
+      return `<div class="${cls}">
+        <span class="clickable-name" onclick="openEditScore('team', ${i})">${t.name}${mark} ✏️${membersList}</span>
+        <span>${t.totalScore} pts</span>
+      </div>`;
     }).join('');
+  }
+
+  function openEditScore(type, index) {
+    editTargetType = type;
+    editTargetIndex = index;
+    
+    let name, score;
+    if (type === 'player') {
+      name = players[index].name;
+      score = players[index].totalScore;
+    } else {
+      name = teams[index].name;
+      score = teams[index].totalScore;
+    }
+    
+    document.getElementById('editScoreTitle').textContent = `Modifier : ${name}`;
+    document.getElementById('editScoreCurrent').textContent = `Score actuel : ${score} pts`;
+    document.getElementById('editScoreAmount').value = '';
+    document.getElementById('editScorePopup').classList.remove('hidden');
+  }
+
+  function hideEditScore() {
+    document.getElementById('editScorePopup').classList.add('hidden');
+    editTargetType = null;
+    editTargetIndex = null;
+  }
+
+  function quickEditScore(amount) {
+    document.getElementById('editScoreAmount').value = amount;
+  }
+
+  function applyEditScore() {
+    const amount = parseInt(document.getElementById('editScoreAmount').value) || 0;
+    if (amount === 0) {
+      hideEditScore();
+      return;
+    }
+    
+    if (editTargetType === 'player') {
+      const player = players[editTargetIndex];
+      player.totalScore += amount;
+      if (player.totalScore < 0) player.totalScore = 0;
+      
+      if (player.finished && player.totalScore < pointsTarget) {
+        player.finished = false;
+        player.finishRank = null;
+        const idx = finishOrder.indexOf(player);
+        if (idx > -1) finishOrder.splice(idx, 1);
+        finishOrder.forEach((p, i) => { p.finishRank = i + 1; });
+      }
+    } else {
+      const team = teams[editTargetIndex];
+      team.totalScore += amount;
+      if (team.totalScore < 0) team.totalScore = 0;
+      
+      if (team.finished && team.totalScore < pointsTarget) {
+        team.finished = false;
+        team.finishRank = null;
+        const idx = finishOrder.indexOf(team);
+        if (idx > -1) finishOrder.splice(idx, 1);
+        finishOrder.forEach((t, i) => { t.finishRank = i + 1; });
+      }
+    }
+    
+    hideEditScore();
+    updateUI();
   }
 
   function addScore(points) {
